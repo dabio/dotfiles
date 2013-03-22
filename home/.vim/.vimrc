@@ -14,6 +14,7 @@ Bundle 'gmarik/vundle'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline'
 Bundle 'uggedal/go-vim'
+Bundle 'cakebaker/scss-syntax.vim'
 
 filetype plugin indent on      " required!
 
@@ -105,7 +106,7 @@ colorscheme Tomorrow-Night
 
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-autocmd FileType mustache setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Go
