@@ -108,6 +108,7 @@ autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Go
 set rtp+=$GOROOT/misc/vim
