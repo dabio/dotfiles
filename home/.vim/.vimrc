@@ -24,6 +24,7 @@ set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
+set pastetoggle=<F2>
 
 set encoding=utf-8
 set fileencoding=utf-8
