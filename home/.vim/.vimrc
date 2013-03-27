@@ -88,13 +88,19 @@ noremap ; :
 
 au FocusLost * :wa
 
+" Re-source .vimrc on save so changes are effective immediately:
+if has('autocmd')
+    autocmd! BufWritePost .vimrc source %
+endif
+
 nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
 nnoremap <leader>a :Ack
 nnoremap <leader>ft Vatzf
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>q gqip
 nnoremap <leader>c V`]
-nnoremap <leader>ev <C-w><C-v><C-l>:e $MYVIMRC<cr>
+" Edit .vimrc with <leader>ev shortcut
+nnoremap <leader>ev :e! $MYVIMRC<cr>
 
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
