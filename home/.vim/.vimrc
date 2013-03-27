@@ -15,6 +15,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'Lokaltog/powerline'
 Bundle 'uggedal/go-vim'
 Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on      " required!
 
