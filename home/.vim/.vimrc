@@ -1,4 +1,5 @@
-set nocompatible               " be iMproved
+" Forget being compatible with good ol' vi
+set nocompatible
 
 filetype off                   " required!
 set rtp+=~/.vim/bundle/vundle/
@@ -17,7 +18,34 @@ Bundle 'uggedal/go-vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'vim-ruby/vim-ruby'
 
-filetype plugin indent on      " required!
+" Get that filetype stuff happening
+filetype on
+filetype plugin on
+filetype indent on
+
+" Turn on that syntax highlighting
+syntax on
+
+" Why is this not a default
+set hidden
+
+" Don't update the display while executing macros
+set lazyredraw
+
+" At least let yourself know what mode you're in
+set showmode
+
+" Enable enhanced command-line completion. Presumes you have compiled
+" with +wildmenu.  See :help 'wildmenu'
+set wildmenu
+set wildmode=list:longest
+
+" Set new mapleader default key.
+let mapleader=","
+
+" Let's make it easy to edit this file (mnemonic for the key sequence is
+" 'e'dit 'v'imrc)
+nmap <silent> <leader>ev :e $MYVIMRC<cr>
 
 set modelines=0
 
@@ -31,11 +59,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 set scrolloff=3
 set autoindent
-set showmode
 set showcmd
-set hidden
-set wildmenu
-set wildmode=list:longest
 set visualbell
 set cursorline
 set ttyfast
@@ -45,8 +69,6 @@ set backspace=indent,eol,start
 set laststatus=2
 
 "set undofile
-
-let mapleader=","
 
 nnoremap / /\v
 vnoremap / /\v
@@ -100,8 +122,6 @@ nnoremap <leader>ft Vatzf
 nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
 nnoremap <leader>q gqip
 nnoremap <leader>c V`]
-" Edit .vimrc with <leader>ev shortcut
-nnoremap <leader>ev :e! $MYVIMRC<cr>
 
 nnoremap <leader>w <C-w>v<C-w>l
 nnoremap <C-h> <C-w>h
@@ -109,16 +129,15 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-syntax enable
 colorscheme Tomorrow-Night
 
 autocmd FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType eruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Go
 set rtp+=$GOROOT/misc/vim
 autocmd BufWritePost *.go :silent Fmt
-
