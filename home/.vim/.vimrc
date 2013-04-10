@@ -17,6 +17,7 @@ Bundle 'Lokaltog/powerline'
 Bundle 'uggedal/go-vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'airblade/vim-gitgutter'
 
 " Get that filetype stuff happening
 filetype on
