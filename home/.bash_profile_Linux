@@ -32,3 +32,6 @@ if [ -d "$HOME/.rbenv/bin" ] ; then
     PATH="$HOME/.rbenv/bin:$PATH"
     eval "$(rbenv init -)"
 fi
+
+export CHROMIUM_USER_FLAGS="--disk-cache-dir=/var/tmp"
+export GOPATH=${HOME}/projects/go
