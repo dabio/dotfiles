@@ -13,7 +13,8 @@ Bundle 'gmarik/vundle'
 "
 " original repos on github
 Bundle 'scrooloose/nerdtree'
-Bundle 'Lokaltog/powerline'
+" Bundle 'Lokaltog/powerline'
+Bundle 'bling/vim-airline'
 Bundle 'uggedal/go-vim'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'vim-ruby/vim-ruby'
