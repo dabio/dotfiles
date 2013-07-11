@@ -21,4 +21,4 @@ PATH=/usr/local/share/npm/bin:$PATH
 
 # Go
 # Define all projects for go here
-GOPATH=~/Projects/funkuhren
+GOPATH=~/Projects/go
