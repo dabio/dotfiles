@@ -21,4 +21,5 @@ PATH=/usr/local/share/npm/bin:$PATH
 
 # Go
 # Define all projects for go here
-GOPATH=~/Projects/go
+export GOPATH=~/Projects/go
+export GOROOT=/usr/local/Cellar/go/1.1.2
