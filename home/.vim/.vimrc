@@ -141,6 +141,9 @@ autocmd FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType eruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
+" Syntax highlighing for .md files.
+au BufRead,BufNewFile *.md set filetype=markdown
+
 " Go
 set rtp+=$GOROOT/misc/vim
 autocmd BufWritePost *.go :silent Fmt
