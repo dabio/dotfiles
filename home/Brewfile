@@ -5,3 +5,4 @@ install go
 install rbenv rbenv-default-gems rbenv-gem-rehash ruby-build
 install tig
 install macvim
+install heroku-toolbelt
