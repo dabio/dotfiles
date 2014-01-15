@@ -6,3 +6,9 @@ install rbenv rbenv-default-gems rbenv-gem-rehash ruby-build
 install tig
 install macvim
 install heroku-toolbelt
+tap phinze/cask
+install brew-cash
+install cask google-chrome
+install cask google-drive
+install cask opera
+install cask textmate
