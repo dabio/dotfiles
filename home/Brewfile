@@ -12,3 +12,9 @@ cask install google-chrome
 cask install google-drive
 cask install opera
 cask install textmate
+cask install appzapper
+cask install transmission
+cask install skype
+cask install dropbox
+cask install menumeters
+cask install alfred
