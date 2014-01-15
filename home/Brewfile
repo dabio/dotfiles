@@ -7,7 +7,7 @@ install tig
 install macvim
 install heroku-toolbelt
 tap phinze/cask
-install brew-cash
+install brew-cask
 install cask google-chrome
 install cask google-drive
 install cask opera
