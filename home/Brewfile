@@ -8,7 +8,7 @@ install macvim
 install heroku-toolbelt
 tap phinze/cask
 install brew-cask
-install cask google-chrome
-install cask google-drive
-install cask opera
-install cask textmate
+cask install google-chrome
+cask install google-drive
+cask install opera
+cask install textmate
