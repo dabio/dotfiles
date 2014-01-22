@@ -14,6 +14,7 @@ fi
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+# Change the caskroom
 export HOMEBREW_CASK_OPTS="--caskroom=/usr/local/Caskroom"
 
 # NPM
@@ -27,3 +28,8 @@ export GOROOT=/usr/local/Cellar/go/1.1.2/libexec
 
 # Postgres
 PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin
+export GOPATH=~/Projects/go
+#export GOROOT=/usr/local/Cellar/go/1.1.2
+
+# PostgreSQL
+PATH=/Applications/Postgres93.app/Contents/MacOS/bin:$PATH
