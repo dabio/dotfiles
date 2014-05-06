@@ -1,6 +1,6 @@
 'exception-reporting': {}
 'release-notes':
-  'viewedVersion': '0.71.0'
+  'viewedVersion': '0.92.0'
 'welcome':
   'showOnStartup': false
 'metrics': {}
@@ -14,11 +14,6 @@
   'themes': [
     'atom-light-ui'
     'atom-light-syntax'
-  ]
-  'ignoredNames': [
-    '.git'
-    '.svn'
-    '.DS_Store'
   ]
   'disabledPackages': [
     'metrics'
