@@ -1,6 +1,6 @@
 'exception-reporting': {}
 'release-notes':
-  'viewedVersion': '0.71.0'
+  'viewedVersion': '0.92.0'
 'welcome':
   'showOnStartup': false
 'metrics': {}
@@ -15,11 +15,6 @@
     'atom-light-ui'
     'atom-light-syntax'
   ]
-  'ignoredNames': [
-    '.git'
-    '.svn'
-    '.DS_Store'
-  ]
   'disabledPackages': [
     'metrics'
     'exception-reporting'
@@ -27,6 +22,7 @@
 'tree-view':
   'hideIgnoredNames': true
   'hideVcsIgnoredFiles': true
+  'showOnRightSide': true
 'spell-check':
   'grammars': [
     'source.gfm'
@@ -41,3 +37,5 @@
     'text.plain'
     'text.plain.null-grammar'
   ]
+'autoclose-html':
+  'closeOnEndOfOpeningTag': true
