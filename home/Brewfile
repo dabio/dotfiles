@@ -6,15 +6,20 @@ install rbenv rbenv-default-gems rbenv-gem-rehash ruby-build
 install tig
 install macvim
 install heroku-toolbelt
+install xctool
 tap phinze/cask
 install brew-cask
 cask install google-chrome
 cask install google-drive
-cask install opera
+cask install opera-next
 cask install textmate
 cask install appzapper
 cask install transmission
 cask install skype
-cask install dropbox
 cask install menumeters
 cask install alfred
+cask install dash
+cask install iterm2
+cask install rdio
+cask install mplayerx
+cask install atom
