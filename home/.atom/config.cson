@@ -1,15 +1,15 @@
 'exception-reporting': {}
 'release-notes':
-  'viewedVersion': '0.92.0'
+  'viewedVersion': '0.94.0'
 'welcome':
   'showOnStartup': false
 'metrics': {}
 'editor':
   'showInvisibles': true
-  'fontSize': 13
   'softWrap': true
   'softWrapAtPreferredLineLength': true
   'fontFamily': 'source code pro'
+  'fontSize': 15
 'core':
   'themes': [
     'atom-light-ui'
