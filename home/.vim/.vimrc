@@ -2,24 +2,26 @@
 set nocompatible
 
 filetype off                   " required!
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " My Bundles here:
 "
 " original repos on github
-Bundle 'scrooloose/nerdtree'
-" Bundle 'Lokaltog/powerline'
-Bundle 'bling/vim-airline'
-Bundle 'uggedal/go-vim'
-Bundle 'cakebaker/scss-syntax.vim'
-Bundle 'vim-ruby/vim-ruby'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'rodjek/vim-puppet'
+Plugin 'scrooloose/nerdtree'
+" Plugin 'Lokaltog/powerline'
+Plugin 'bling/vim-airline'
+Plugin 'fatih/vim-go'
+Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'Keithbsmiley/swift.vim'
+
+call vundle#end()
 
 " Get that filetype stuff happening
 filetype on

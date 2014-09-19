@@ -10,6 +10,7 @@
   'softWrapAtPreferredLineLength': true
   'fontFamily': 'source code pro'
   'fontSize': 15
+  'invisibles': {}
 'core':
   'themes': [
     'atom-light-ui'
