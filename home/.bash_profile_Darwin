@@ -18,7 +18,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 # Change the caskroom
-export HOMEBREW_CASK_OPTS="--caskroom=/usr/local/Caskroom"
+export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
 
 # NPM
 # Allow the npm-installed libraries to get picked up.
