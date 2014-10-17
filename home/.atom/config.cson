@@ -1,9 +1,7 @@
-'exception-reporting': {}
 'release-notes':
   'viewedVersion': '0.94.0'
 'welcome':
   'showOnStartup': false
-'metrics': {}
 'editor':
   'showInvisibles': true
   'softWrap': true
@@ -24,13 +22,6 @@
   'hideIgnoredNames': true
   'hideVcsIgnoredFiles': true
   'showOnRightSide': true
-'spell-check':
-  'grammars': [
-    'source.gfm'
-    'text.git-commit'
-    'text.plain'
-    'text.plain.null-grammar'
-  ]
 'markdown-preview':
   'grammars': [
     'source.gfm'

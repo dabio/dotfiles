@@ -18,7 +18,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 # Change the caskroom
-export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
+#export HOMEBREW_CASK_OPTS="--appdir=/Applications --caskroom=/usr/local/Caskroom"
 
 # NPM
 # Allow the npm-installed libraries to get picked up.
@@ -30,12 +30,12 @@ export GOPATH=~/Sites/go
 export GOROOT=/usr/local/Cellar/go/1.1.2/libexec
 
 # Postgres
-PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin
-export GOPATH=~/Projects/go
+#PATH=$PATH:/Applications/Postgres93.app/Contents/MacOS/bin
+#export GOPATH=~/Projects/go
 #export GOROOT=/usr/local/Cellar/go/1.1.2
 
 # PostgreSQL
-PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
+#PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin:$PATH
 
-#
+# Default Editor
 EDITOR=/usr/bin/vim
