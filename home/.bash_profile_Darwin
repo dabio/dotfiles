@@ -13,6 +13,9 @@ fi
 HISTSIZE=5000
 SAVEHIST=5000
 
+# Teminal Colors
+export CLICOLOR=1
+
 # Enable bash completion with homebrew
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
