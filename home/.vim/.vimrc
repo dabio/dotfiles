@@ -20,6 +20,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'Keithbsmiley/swift.vim'
+Plugin 'wting/rust.vim'
 
 call vundle#end()
 
