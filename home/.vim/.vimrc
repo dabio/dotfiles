@@ -12,8 +12,8 @@ Plugin 'gmarik/vundle'
 " My Bundles here:
 "
 " original repos on github
+Plugin 'tpope/vim-sensible'
 Plugin 'scrooloose/nerdtree'
-" Plugin 'Lokaltog/powerline'
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
@@ -24,79 +24,58 @@ Plugin 'wting/rust.vim'
 
 call vundle#end()
 
-" Get that filetype stuff happening
-filetype on
-filetype plugin on
-filetype indent on
-
 " Turn on that syntax highlighting
-syntax on
+" syntax on
 
 " Why is this not a default
-set hidden
+" set hidden
 
 " Don't update the display while executing macros
-set lazyredraw
+" set lazyredraw
 
 " At least let yourself know what mode you're in
-set showmode
-
-" Enable enhanced command-line completion. Presumes you have compiled
-" with +wildmenu.  See :help 'wildmenu'
-set wildmenu
-set wildmode=list:longest
+" set showmode
 
 " Set new mapleader default key.
-let mapleader=","
+" let mapleader=","
 
 " Let's make it easy to edit this file (mnemonic for the key sequence is
 " 'e'dit 'v'imrc)
-nmap <silent> <leader>ev :e $MYVIMRC<cr>
+" nmap <silent> <leader>ev :e $MYVIMRC<cr>
 
-set modelines=0
-
+"set modelines=0
+"
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
-set pastetoggle=<F2>
+"set pastetoggle=<F2>
 
-set encoding=utf-8
-set fileencoding=utf-8
-set scrolloff=3
-set autoindent
-set showcmd
 set visualbell
 set cursorline
 set ttyfast
-set ruler
-set backspace=indent,eol,start
-" Always show the statusline
-set laststatus=2
 
-"set undofile
+""set undofile
 
-nnoremap / /\v
-vnoremap / /\v
+"nnoremap / /\v
+"vnoremap / /\v
 set ignorecase
 set smartcase
-" set gdefault
-set incsearch
+"" set gdefault
 set showmatch
 set hlsearch
-nnoremap <leader><space> :noh<cr>
-nnoremap <tab> %
-vnoremap <tab> %
+"nnoremap <leader><space> :noh<cr>
+"nnoremap <tab> %
+"vnoremap <tab> %
 
-set wrap
-" set textwidth=79
-set formatoptions=qrn1
+"set wrap
+"" set textwidth=79
+"set formatoptions=qrn1
 
-set list
-set listchars=tab:▸\ ,eol:¬
+"set list
 
 set relativenumber
-set colorcolumn=85
+set colorcolumn=80
 
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -106,14 +85,14 @@ inoremap <up> <nop>
 inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
-noremap j gj
-noremap k gk
+"noremap j gj
+"noremap k gk
 
-inoremap <F1> <ESC>
-nnoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+"inoremap <F1> <ESC>
+"nnoremap <F1> <ESC>
+"vnoremap <F1> <ESC>
 
-noremap ; :
+"noremap ; :
 
 au FocusLost * :wa
 
@@ -122,18 +101,18 @@ if has('autocmd')
     autocmd! BufWritePost .vimrc source %
 endif
 
-nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
-nnoremap <leader>a :Ack
-nnoremap <leader>ft Vatzf
-nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
-nnoremap <leader>q gqip
-nnoremap <leader>c V`]
+"nnoremap <leader>W :%s/\s\+$//<cr>:let @/=''<CR>
+"nnoremap <leader>a :Ack
+"nnoremap <leader>ft Vatzf
+"nnoremap <leader>S ?{<CR>jV/^\s*\}?$<CR>k:sort<CR>:noh<CR>
+"nnoremap <leader>q gqip
+"nnoremap <leader>c V`]
 
-nnoremap <leader>w <C-w>v<C-w>l
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"nnoremap <leader>w <C-w>v<C-w>l
+"nnoremap <C-h> <C-w>h
+"nnoremap <C-j> <C-w>j
+"nnoremap <C-k> <C-w>k
+"nnoremap <C-l> <C-w>l
 
 colorscheme Tomorrow-Night
 
@@ -146,7 +125,3 @@ autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Syntax highlighing for .md files.
 au BufRead,BufNewFile *.md set filetype=markdown
-
-" Go
-set rtp+=$GOROOT/misc/vim
-autocmd BufWritePost *.go :silent Fmt
