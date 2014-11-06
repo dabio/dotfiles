@@ -62,8 +62,8 @@ set ttyfast
 set ignorecase
 set smartcase
 "" set gdefault
-"set showmatch
-"set hlsearch
+set showmatch
+set hlsearch
 "nnoremap <leader><space> :noh<cr>
 "nnoremap <tab> %
 "vnoremap <tab> %
