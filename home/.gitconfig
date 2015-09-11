@@ -3,7 +3,7 @@
     email = dabio@users.noreply.github.com
 [core]
     editor = "/usr/bin/vim"
-    excludesfile = /Users/dan/.global_gitignore
+    excludesfile = /Users/dan/.config/git/ignore
 [color]
     ui = true
 [status]
