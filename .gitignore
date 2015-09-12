@@ -8,3 +8,6 @@ home/.vim/bundle/
 /home/.rbenv/shims/
 /home/.rbenv/versions/
 
+# fish shell
+/home/.config/fish/fish_history
+/home/.config/fish/fishd.*
