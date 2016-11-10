@@ -1,0 +1,14 @@
+// Platzieren Sie Ihre Einstellungen in dieser Datei, um die Standardeinstellungen zu überschreiben.
+{
+    "editor.fontFamily": "\"Source Code Pro\", Menlo, Monaco, Consolas, \"Droid Sans Mono\", \"Courier New\", monospace, \"Droid Sans Fallback\"",
+    "editor.fontSize": 13,
+    "editor.scrollBeyondLastLine": false,
+    "editor.renderWhitespace": true,
+    "editor.rulers": [78],
+
+    "files.trimTrailingWhitespace": true,
+
+    "terminal.integrated.fontFamily": "Source Code Pro, Menlo, Monaco, Consolas, \"Droid Sans Mono\", \"Courier New\", monospace, \"Droid Sans Fallback\"",
+
+    "files.insertFinalNewline": true
+}

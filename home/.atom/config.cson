@@ -1,33 +1,32 @@
-'release-notes':
-  'viewedVersion': '0.94.0'
-'welcome':
-  'showOnStartup': false
-'editor':
-  'showInvisibles': true
-  'softWrap': true
-  'softWrapAtPreferredLineLength': true
-  'fontFamily': 'source code pro'
-  'fontSize': 15
-  'invisibles': {}
-'core':
-  'themes': [
-    'atom-light-ui'
-    'atom-light-syntax'
-  ]
-  'disabledPackages': [
-    'metrics'
-    'exception-reporting'
-  ]
-'tree-view':
-  'hideIgnoredNames': true
-  'hideVcsIgnoredFiles': true
-  'showOnRightSide': true
-'markdown-preview':
-  'grammars': [
-    'source.gfm'
-    'source.litcoffee'
-    'text.plain'
-    'text.plain.null-grammar'
-  ]
-'autoclose-html':
-  'closeOnEndOfOpeningTag': true
+"*":
+  "atom-beautify":
+    general:
+      _analyticsUserId: "80554aea-354c-4590-b7da-f844a0371c47"
+  "autoclose-html":
+    closeOnEndOfOpeningTag: true
+  core:
+    disabledPackages: [
+      "metrics"
+      "exception-reporting"
+    ]
+  editor:
+    fontFamily: "source code pro"
+    invisibles: {}
+    showInvisibles: true
+    softWrap: true
+    softWrapAtPreferredLineLength: true
+  "markdown-preview":
+    grammars: [
+      "source.gfm"
+      "source.litcoffee"
+      "text.plain"
+      "text.plain.null-grammar"
+    ]
+  "release-notes":
+    viewedVersion: "0.94.0"
+  "tree-view":
+    hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
+    showOnRightSide: true
+  welcome:
+    showOnStartup: false

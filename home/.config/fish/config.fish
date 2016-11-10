@@ -7,6 +7,3 @@ set -x EDITOR /usr/bin/vim
 
 # aliases
 alias uuidgen 'uuidgen | tr "[:upper:]" "[:lower:]"'
-
-# direnv
-eval (direnv hook fish)
