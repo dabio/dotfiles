@@ -1,6 +1,7 @@
 [user]
     name = Danilo
     email = dabio@users.noreply.github.com
+    signingkey = A4C2D9D3
 [core]
     editor = "/usr/bin/vim"
     excludesfile = /Users/dan/.config/git/ignore
@@ -18,3 +19,5 @@
     required = true
 [push]
 	default = simple
+[commit]
+	gpgsign = true
