@@ -1,5 +1,6 @@
 " Forget being compatible with good ol' vi
 set nocompatible
+set shell=/bin/bash
 
 filetype off                   " required!
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -7,7 +8,7 @@ call vundle#begin()
 
 " let Vundle manage Vundle
 " required! 
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 " My Bundles here:
 "
@@ -17,10 +18,7 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'bling/vim-airline'
 Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'vim-ruby/vim-ruby'
 Plugin 'airblade/vim-gitgutter'
-Plugin 'Keithbsmiley/swift.vim'
-Plugin 'wting/rust.vim'
 
 call vundle#end()
 
