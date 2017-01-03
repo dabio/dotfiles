@@ -126,3 +126,17 @@ autocmd FileType terraform setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Syntax highlighing for .md files.
 au BufRead,BufNewFile *.md set filetype=markdown
+
+" go related stuff
+au FileType go nmap <leader>r <Plug>(go-run)
+let g:go_fmt_command = "goimports"
+" let g:go_highlight_fields = 1
+" let g:go_highlight_methods = 1
+" let g:go_highlight_functions = 1
+let g:go_metalinter_autosave = 1
+autocmd Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+autocmd Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+autocmd Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+
