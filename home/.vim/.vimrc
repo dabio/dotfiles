@@ -20,6 +20,7 @@ Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'hashivim/vim-terraform'
+Plugin 'rhysd/vim-crystal'
 
 call vundle#end()
 
@@ -123,6 +124,7 @@ autocmd FileType eruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
 autocmd FileType terraform setlocal tabstop=2 shiftwidth=2 softtabstop=2
+autocmd FileType crystal setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Syntax highlighing for .md files.
 au BufRead,BufNewFile *.md set filetype=markdown
