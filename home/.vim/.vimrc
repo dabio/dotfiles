@@ -21,6 +21,7 @@ Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'hashivim/vim-terraform'
 Plugin 'rhysd/vim-crystal'
+Plugin 'puppetlabs/puppet-syntax-vim'
 
 call vundle#end()
 
@@ -37,7 +38,7 @@ call vundle#end()
 " set showmode
 
 " Set new mapleader default key.
-" let mapleader=","
+let mapleader=","
 
 " Let's make it easy to edit this file (mnemonic for the key sequence is
 " 'e'dit 'v'imrc)
@@ -55,7 +56,11 @@ set visualbell
 set cursorline
 set ttyfast
 
-""set undofile
+" vim feels more natural when split window below and right
+set splitbelow
+set splitright
+
+"set undofile
 
 "nnoremap / /\v
 "vnoremap / /\v
@@ -109,10 +114,11 @@ endif
 "nnoremap <leader>c V`]
 
 "nnoremap <leader>w <C-w>v<C-w>l
-"nnoremap <C-h> <C-w>h
-"nnoremap <C-j> <C-w>j
-"nnoremap <C-k> <C-w>k
-"nnoremap <C-l> <C-w>l
+" jump between split windows with ctrl-j,k,l,h
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
 
 colorscheme Tomorrow-Night
 
@@ -130,7 +136,10 @@ autocmd FileType crystal setlocal tabstop=2 shiftwidth=2 softtabstop=2
 au BufRead,BufNewFile *.md set filetype=markdown
 
 " go related stuff
-au FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)
+autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
 let g:go_fmt_command = "goimports"
 " let g:go_highlight_fields = 1
 " let g:go_highlight_methods = 1
