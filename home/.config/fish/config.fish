@@ -7,6 +7,7 @@ set -x PATH $PATH /Applications/Postgres.app/Contents/Versions/latest/bin
 # go
 set -x GOPATH $HOME/Sites/go
 set -x PATH $PATH $GOPATH/bin
+set -x CDPATH $CDPATH $GOPATH/src/github.com
 
 # Homebrew
 set -x HOMEBREW_CASK_OPTS --appdir=$HOME/Applications

@@ -20,7 +20,6 @@ Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'hashivim/vim-terraform'
-Plugin 'rhysd/vim-crystal'
 Plugin 'puppetlabs/puppet-syntax-vim'
 
 call vundle#end()
