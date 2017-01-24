@@ -13,6 +13,7 @@ brew "homeshick", args: ['with-fish']
 brew "keybase"
 brew "gnupg2"
 brew "mas"
+brew "pass"
 cask "google-chrome"
 cask "google-drive"
 cask "textmate"
