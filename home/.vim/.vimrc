@@ -15,7 +15,7 @@ Plugin 'VundleVim/Vundle.vim'
 " original repos on github
 Plugin 'tpope/vim-sensible'
 Plugin 'scrooloose/nerdtree'
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
 Plugin 'fatih/vim-go'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'airblade/vim-gitgutter'
