@@ -13,6 +13,7 @@ brew "homeshick", args: ['with-fish']
 brew "keybase"
 brew "gnupg2"
 brew "mas"
+brew "tmux"
 cask "aerial"
 cask "appzapper"
 cask "atom"
