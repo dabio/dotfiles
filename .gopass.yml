@@ -1,0 +1,10 @@
+alwaystrust: false
+autoimport: false
+autopull: true
+autopush: true
+cliptimeout: 45
+loadkeys: false
+noconfirm: false
+path: /Users/dan/.password-store
+persistkeys: false
+version: 1.0.0

@@ -1,16 +1,17 @@
 # vim
-home/.vim/bundle/
+/.vim/plugged/
+/.vim/colors/
 
 # mac
 .DS_Store
 
 # rbenv
-/home/.rbenv/shims/
-/home/.rbenv/versions/
+/.rbenv/shims/
+/.rbenv/versions/
 
 # fish shell
-/home/.config/fish/fish_history
-/home/.config/fish/fishd.*
+/.config/fish/fish_history
+/.config/fish/fishd.*
 
 # atom
-home/.atom/
+/.atom/

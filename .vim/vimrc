@@ -1,0 +1,117 @@
+set nocompatible
+
+" Specify a directory for plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'scrooloose/nerdtree', {'on': 'NerdtreeToggle' }
+Plug 'itchyny/lightline.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'fatih/vim-go', { 'for': 'go' }
+
+" Initialize plugin system
+call plug#end()
+
+" neovim sensible
+" Use "hybrid" (both absolute and relative) line numbers
+set number
+set relativenumber
+
+" use the system clipboard
+set clipboard=unnamed
+
+set colorcolumn=78
+
+" Set new mapleader default key.
+let mapleader=","
+
+" searching
+set ignorecase
+set smartcase
+set showmatch
+set hlsearch
+
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+
+set visualbell
+set cursorline
+set ttyfast
+
+" vim feels more natural when split windows below and right
+set splitbelow
+set splitright
+
+" don't use swapfile
+set noswapfile
+set nobackup
+set nowritebackup
+
+" we show the mode with lightline
+set noshowmode
+
+let g:lightline = {
+  \ 'colorscheme': 'wombat',
+  \ }
+
+" deactivate arrow keys
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+
+" jump between split windows with ctrl-h,j,k,l
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
+" remove search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+" center the screen
+nnoremap <space> zz
+
+let base16colorspace=256
+colorscheme base16-tomorrow-night
+if has('nvim')
+  set termguicolors
+endif
+
+" do not show stupid q: window
+map q: :q
+
+" allow saving of files as sudo when I forgot to start vim using sudo
+cmap w!! w !sudo tee > /dev/null %
+
+" fast saving
+nmap <leader>w :w!<CR>
+
+if has('autocmd')
+  filetype plugin indent on
+  augroup vimrc
+    au!
+    " Re-source .vimrc on save so changes are effective immediately:
+    au BufWritePost vimrc nested source %
+  augroup END
+
+  " save when losing the focus
+  au FocusLost * :wa
+
+  " set tabs to 2
+  au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  au FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  au FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  au FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+  
+  " syntax highlighting for .md files
+  au BufRead,BufNewFile *.md set filetype=markdown
+endif
+
+" vim:ts=2:sw=2:et

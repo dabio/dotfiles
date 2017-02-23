@@ -11,9 +11,9 @@ set -x PATH $PATH $GOPATH/bin
 # Homebrew
 set -x HOMEBREW_CASK_OPTS --appdir=$HOME/Applications
 
-set -x EDITOR /usr/bin/vim
+set -x EDITOR /usr/local/bin/nvim
 set -x HOMESHICK_DIR /usr/local/opt/homeshick
-set -x DOCKER_API_VERSION 1.23
+set -x DOCKER_API_VERSION 1.22
 
 # direnv
 eval (direnv hook fish)
