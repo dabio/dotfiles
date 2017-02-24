@@ -8,6 +8,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
+Plug 'ntpeters/vim-better-whitespace'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-go', { 'do': 'make' }
 
@@ -119,7 +120,7 @@ if has('autocmd')
   au FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
   au FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
   au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  
+
   " syntax highlighting for .md files
   au BufRead,BufNewFile *.md set filetype=markdown
 endif
@@ -158,5 +159,7 @@ let NERDTreeIgnore = ['.DS_Store', '\.git$']
 "   inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 " endif
 
+" =========== vim-better-whitespace ===========
+au BufWritePre * StripWhitespace
 
 " vim:ts=2:sw=2:et
