@@ -3,13 +3,19 @@ set nocompatible
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree', {'on': 'NerdtreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-go', { 'do': 'make' }
 
 " Initialize plugin system
 call plug#end()
+
+let g:python_host_prog = '/Users/dan/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
+let g:python3_host_prog = '/Users/dan/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
 
 " neovim sensible
 " Use "hybrid" (both absolute and relative) line numbers
@@ -91,6 +97,10 @@ cmap w!! w !sudo tee > /dev/null %
 " fast saving
 nmap <leader>w :w!<CR>
 
+if !empty(&viminfo)
+  set viminfo^=!
+endif
+
 if has('autocmd')
   filetype plugin indent on
   augroup vimrc
@@ -113,5 +123,40 @@ if has('autocmd')
   " syntax highlighting for .md files
   au BufRead,BufNewFile *.md set filetype=markdown
 endif
+
+" =========== go ===========
+au Filetype go nmap <leader>b <Plug>(go-build)
+au Filetype go nmap <leader>r <Plug>(go-run)
+au Filetype go nmap <leader>t <Plug>(go-test)
+au Filetype go nmap <leader>c <Plug>(go-coverage-toggle)
+
+let g:go_fmt_command = "goimports"
+let g:go_metalinter_autosave = 1
+
+au Filetype go command! -bang A call go#alternate#Swicth(<bang>0, 'edit')
+au Filetype go command! -bang AV call go#alternate#Swicth(<bang>0, 'vsplit')
+au Filetype go command! -bang AS call go#alternate#Swicth(<bang>0, 'split')
+au Filetype go command! -bang AT call go#alternate#Swicth(<bang>0, 'tabe')
+
+" =========== NerdTree ===========
+nmap <C-n> :NERDTreeToggle<CR>
+noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Leader>f :NERDTreeFind<CR>
+
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['.DS_Store', '\.git$']
+
+" =========== deoplete ===========
+" if has('nvim')
+"   let g:deoplete#enable_at_startup = 1
+"
+"   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
+"   let g:deoplete#sources#go#align_class = 1
+"
+"   " deoplete tab-complete
+"   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+"   inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
+" endif
+
 
 " vim:ts=2:sw=2:et
