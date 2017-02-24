@@ -26,3 +26,6 @@ source $HOME/.config/fish/gnupg.fish
 
 # homeshick
 source /usr/local/opt/homeshick/homeshick.fish
+
+# iterm2
+source $HOME/.config/fish/startup.fish

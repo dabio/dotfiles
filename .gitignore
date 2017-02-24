@@ -12,6 +12,7 @@
 # fish shell
 /.config/fish/fish_history
 /.config/fish/fishd.*
+/.config/fish/startup.fish
 
-# atom
-/.atom/
+# direnv
+/.config/direnv

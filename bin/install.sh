@@ -67,6 +67,16 @@ base() {
         409201541 \         # Pages
         409203825 \         # Numbers
         418138339           # HTTP Client
+
+    # activate fish
+    if ! grep -Fxq "$(brew --prefix)/bin/fish" /etc/shells; then
+        echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells > /dev/null
+    fi
+    if [ ! -f "${HOME}/.config/fish/startup.fish" ]; then
+        curl -fLo "${HOME}/.config/fish/startup.fish" --create-dirs \
+            "https://iterm2.com/misc/fish_startup.in"
+    fi
+    chsh -s $(brew --prefix)/bin/fish
 }
 
 get_dotfiles() {
