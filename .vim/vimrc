@@ -134,10 +134,10 @@ au Filetype go nmap <leader>c <Plug>(go-coverage-toggle)
 let g:go_fmt_command = "goimports"
 let g:go_metalinter_autosave = 1
 
-au Filetype go command! -bang A call go#alternate#Swicth(<bang>0, 'edit')
-au Filetype go command! -bang AV call go#alternate#Swicth(<bang>0, 'vsplit')
-au Filetype go command! -bang AS call go#alternate#Swicth(<bang>0, 'split')
-au Filetype go command! -bang AT call go#alternate#Swicth(<bang>0, 'tabe')
+au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " =========== NerdTree ===========
 nmap <C-n> :NERDTreeToggle<CR>

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 set -e
 
 # install.sh
@@ -20,10 +20,15 @@ check_is_sudo() {
 # sets up brew
 setup_sources() {
     # installs command line tools
-    xcode-select --install
+    local status=$(xcode-select -p)
+    if [ "$status" -eq "$status" ] 2> /dev/null; then
+        xcode-select --install
+    fi
 
-    # install homebrew https://brew.sh
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    if ! hash brew 2>/dev/null ; then
+        # install homebrew https://brew.sh
+        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    fi
 
     brew doctor
     brew update
@@ -31,7 +36,6 @@ setup_sources() {
 
 base() {
     brew analytics off
-    #brew doctor
     brew update
 
     brew install bash-completion \
@@ -62,12 +66,6 @@ base() {
     brew tap justwatchcom/gopass
     brew install gopass
 
-    mas install 973049011 \ # secrets
-        409183694 \         # Keynote
-        409201541 \         # Pages
-        409203825 \         # Numbers
-        418138339           # HTTP Client
-
     # activate fish
     if ! grep -Fxq "$(brew --prefix)/bin/fish" /etc/shells; then
         echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells > /dev/null
@@ -77,6 +75,13 @@ base() {
             "https://iterm2.com/misc/fish_startup.in"
     fi
     chsh -s $(brew --prefix)/bin/fish
+
+    mas install \
+        973049011 `# secrets`   \
+        `#409183694 # Keynote`  \
+        409201541 `# Pages`     \
+        409203825 `# Numbers`   \
+        418138339 `# HTTP Client`
 }
 
 get_dotfiles() {
@@ -84,8 +89,12 @@ get_dotfiles() {
 	(
 	cd "$HOME"
 
-	# install dotfiles from repo
-	#git clone https://github.com/dabio/dotfiles.git "${HOME}/.dotfiles"
+    if [ ! -d "${HOME}/.dotfiles" ]; then
+        # install dotfiles from repo
+        git clone \
+            https://github.com/dabio/dotfiles.git \
+            "${HOME}/.dotfiles"
+    fi
 	cd "${HOME}/.dotfiles"
 
 	# installs all the things
@@ -158,7 +167,7 @@ main() {
 	fi
 
     if [[ $cmd == "sources" ]]; then
-        #setup_sources
+        setup_sources
         base
     elif [[ $cmd == "dotfiles" ]]; then
 		get_dotfiles
