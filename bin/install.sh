@@ -37,8 +37,9 @@ setup_sources() {
 base() {
     brew analytics off
     brew update
+    brew upgrade
 
-    brew install bash-completion \
+    brew install \
         go \
         tig \
         heroku-toolbelt \
