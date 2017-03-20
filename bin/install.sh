@@ -10,11 +10,11 @@ PYTHON2=2.7.13
 PYTHON3=3.6.0
 
 check_is_sudo() {
-	CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
-	if [ ${CAN_RUN_SUDO} -eq 0 ]; then
-		echo "Please run as root."
-		exit
-	fi
+    CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
+    if [ ${CAN_RUN_SUDO} -eq 0 ]; then
+        echo "Please run as root."
+        exit
+    fi
 }
 
 # sets up brew
@@ -86,9 +86,9 @@ base() {
 }
 
 get_dotfiles() {
-	# create subshell
-	(
-	cd "$HOME"
+    # create subshell
+    (
+    cd "$HOME"
 
     if [ ! -d "${HOME}/.dotfiles" ]; then
         # install dotfiles from repo
@@ -96,24 +96,24 @@ get_dotfiles() {
             https://github.com/dabio/dotfiles.git \
             "${HOME}/.dotfiles"
     fi
-	cd "${HOME}/.dotfiles"
+    cd "${HOME}/.dotfiles"
 
-	# installs all the things
-	make
-	)
+    # installs all the things
+    make
+    )
 }
 
 install_vim() {
-	# create subshell
-	(
-	cd "$HOME"
+    # create subshell
+    (
+    cd "$HOME"
 
-	ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
+    ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
 
-	# alias vim dotfiles to neovim
-	mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-	ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
-	ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
+    # alias vim dotfiles to neovim
+    mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
+    ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
+    ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
     ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vim"
     ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vi"
@@ -144,37 +144,37 @@ install_vim() {
 
     sudo gem install neovim
 
-	curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
-		"https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-	)
+    curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
+        "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    )
 
     curl -fLo "${HOME}/.vim/colors/base16-tomorrow-night.vim" --create-dirs \
         "https://raw.githubusercontent.com/chriskempson/base16-vim/master/colors/base16-tomorrow-night.vim"
 }
 
 usage() {
-	echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
-	echo "Usage:"
-	echo "  sources     - setup sources & install base pkgs"
-	echo "  dotfiles    - get dotfiles"
-	echo "  vim         - install vim"
+    echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
+    echo "Usage:"
+    echo "  sources     - setup sources & install base pkgs"
+    echo "  dotfiles    - get dotfiles"
+    echo "  vim         - install vim"
 }
 
 main() {
-	local cmd=$1
-	if [[ -z "$cmd" ]]; then
-		usage
-		exit 1
-	fi
+    local cmd=$1
+    if [[ -z "$cmd" ]]; then
+        usage
+        exit 1
+    fi
 
     if [[ $cmd == "sources" ]]; then
         setup_sources
         base
     elif [[ $cmd == "dotfiles" ]]; then
-		get_dotfiles
-	elif [[ $cmd == "vim" ]]; then
-		install_vim
-	fi
+        get_dotfiles
+    elif [[ $cmd == "vim" ]]; then
+        install_vim
+    fi
 }
 
 main "$@"
