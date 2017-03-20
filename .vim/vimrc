@@ -9,6 +9,9 @@ Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
 Plug 'ntpeters/vim-better-whitespace'
+" Plug 'puppetlabs/puppet-syntax-vim'
+" Plug 'saltstack/salt-vim'
+Plug 'kien/ctrlp.vim'
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-go', { 'do': 'make' }
 
@@ -108,36 +111,49 @@ if has('autocmd')
     au!
     " Re-source .vimrc on save so changes are effective immediately:
     au BufWritePost vimrc nested source %
+
+    " save when losing the focus
+    au FocusLost * :wa
   augroup END
 
-  " save when losing the focus
-  au FocusLost * :wa
+  augroup syntax
+    au!
 
-  " set tabs to 2
-  au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  au FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  au FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  au FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
-  au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    " set tabs to 2
+    au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    au FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    au FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    au FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
+    au FileType puppet setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
-  " syntax highlighting for .md files
-  au BufRead,BufNewFile *.md set filetype=markdown
+    " syntax highlighting for .md files
+    au BufRead,BufNewFile *.md set filetype=markdown
+  augroup END
+
+  augroup plugins
+    au!
+
+    " =========== go ===========
+    au Filetype go nmap <leader>b <Plug>(go-build)
+    au Filetype go nmap <leader>r <Plug>(go-run)
+    au Filetype go nmap <leader>t <Plug>(go-test)
+    au Filetype go nmap <leader>c <Plug>(go-coverage-toggle)
+
+    let g:go_fmt_command = "goimports"
+    let g:go_metalinter_autosave = 1
+
+    au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
+    au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
+    au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
+    au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+    " =========== vim-better-whitespace ===========
+    au BufWritePre * StripWhitespace
+  augroup END
+
 endif
-
-" =========== go ===========
-au Filetype go nmap <leader>b <Plug>(go-build)
-au Filetype go nmap <leader>r <Plug>(go-run)
-au Filetype go nmap <leader>t <Plug>(go-test)
-au Filetype go nmap <leader>c <Plug>(go-coverage-toggle)
-
-let g:go_fmt_command = "goimports"
-let g:go_metalinter_autosave = 1
-
-au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
 " =========== NerdTree ===========
 nmap <C-n> :NERDTreeToggle<CR>
@@ -158,8 +174,5 @@ let NERDTreeIgnore = ['.DS_Store', '\.git$']
 "   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "   inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 " endif
-
-" =========== vim-better-whitespace ===========
-au BufWritePre * StripWhitespace
 
 " vim:ts=2:sw=2:et
