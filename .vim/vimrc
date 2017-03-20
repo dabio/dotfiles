@@ -9,9 +9,13 @@ Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
 Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'puppetlabs/puppet-syntax-vim'
-" Plug 'saltstack/salt-vim'
+"Plug 'puppetlabs/puppet-syntax-vim'
+"Plug 'saltstack/salt-vim'
 Plug 'kien/ctrlp.vim'
+
+" =========== color ===========
+Plug 'chriskempson/base16-vim'
+
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-go', { 'do': 'make' }
 
@@ -88,6 +92,11 @@ nnoremap <space> zz
 
 let base16colorspace=256
 colorscheme base16-tomorrow-night
+"colorscheme base16-chalk
+"colorscheme base16-default-dark
+"colorscheme base16-irblack
+"colorscheme base16-twilight
+
 if has('nvim')
   set termguicolors
 endif
