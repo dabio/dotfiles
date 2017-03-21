@@ -147,9 +147,6 @@ install_vim() {
     curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
         "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     )
-
-    curl -fLo "${HOME}/.vim/colors/base16-tomorrow-night.vim" --create-dirs \
-        "https://raw.githubusercontent.com/chriskempson/base16-vim/master/colors/base16-tomorrow-night.vim"
 }
 
 usage() {
