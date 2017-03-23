@@ -65,6 +65,8 @@ set nowritebackup
 " we show the mode with lightline
 set noshowmode
 
+set lazyredraw
+
 let g:lightline = {
   \ 'colorscheme': 'wombat',
   \ }
