@@ -7,7 +7,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'fatih/vim-go', { 'for': 'go' }
-Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
+"Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'puppetlabs/puppet-syntax-vim'
 "Plug 'saltstack/salt-vim'
