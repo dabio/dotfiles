@@ -22,8 +22,8 @@ Plug 'chriskempson/base16-vim'
 " Initialize plugin system
 call plug#end()
 
-let g:python_host_prog = '/Users/dan/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
-let g:python3_host_prog = '/Users/dan/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
+"let g:python_host_prog = '/Users/dan/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
+"let g:python3_host_prog = '/Users/dan/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
 
 " neovim sensible
 " Use "hybrid" (both absolute and relative) line numbers
