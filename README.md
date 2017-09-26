@@ -12,7 +12,7 @@ Get sudo access. Get ssh keys into correct directory.
     $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     $ # change owner of homebrew directory
     $ sudo chown -R dan:staff /usr/local
-    $ brew doctor && brew doctor
+    $ brew doctor
     $ cd /Users/dan && git clone https://github.com/dabio/dotfiles.git .dotfiles
     $ cd /Users/dan/.dotfiles
     $ make
