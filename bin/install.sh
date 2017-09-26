@@ -5,9 +5,6 @@ set -e
 #	This script installs my basic setup for a mac laptop
 
 USERNAME=$(echo $USER)
-# Update to newer python version in vimrc as well
-PYTHON2=2.7.13
-PYTHON3=3.6.0
 
 check_is_sudo() {
     CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
@@ -42,15 +39,14 @@ base() {
     brew install \
         go \
         tig \
-        heroku-toolbelt \
         fish \
         unrar \
         p7zip \
         trash \
         gnupg2 \
         mas \
-        docker \
-        docker-compose
+        neovim \
+        direnv
 
     brew cask install appzapper \
         firefox \
@@ -58,8 +54,6 @@ base() {
         iterm2 \
         spotify \
         sublime-text
-
-    brew install neovim/neovim/neovim
 
     brew tap caskroom/fonts
     brew cask install font-source-code-pro
@@ -117,32 +111,6 @@ install_vim() {
 
     ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vim"
     ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vi"
-
-    brew install pyenv pyenv-virtualenv
-
-    # Python2
-    if [ ! -d "$(pyenv root)/versions/${PYTHON2}" ]; then
-        pyenv install ${PYTHON2}
-    fi
-    if [ ! -d "$(pyenv root)/versions/${PYTHON2}/envs/neovim2" ]; then
-        pyenv virtualenv ${PYTHON2} neovim2
-    fi
-    source "$(pyenv root)/versions/neovim2/bin/activate"
-    pip install neovim
-    deactivate
-
-    # Python3
-    if [ ! -d "$(pyenv root)/versions/${PYTHON3}" ]; then
-        pyenv install ${PYTHON3}
-    fi
-    if [ ! -d "$(pyenv root)/versions/${PYTHON3}/envs/neovim3" ]; then
-        pyenv virtualenv ${PYTHON3} neovim3
-    fi
-    source "$(pyenv root)/versions/neovim3/bin/activate"
-    pip install neovim
-    deactivate
-
-    sudo gem install neovim
 
     curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
         "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
