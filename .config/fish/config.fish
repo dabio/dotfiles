@@ -12,8 +12,10 @@ if test -d $GOPATH/bin
     set -x PATH $PATH $GOPATH/bin
 end
 
+status --is-interactive ; and eval sh $HOME/.dotfiles/.config/base16-shell/scripts/base16-default-dark.sh
+
 # Homebrew
-set -x HOMEBREW_CASK_OPTS --appdir=$HOME/Applications
+#set -x HOMEBREW_CASK_OPTS --appdir=$HOME/Applications
 
 set -x EDITOR /usr/local/bin/nvim
 #set -x DOCKER_API_VERSION 1.22
@@ -25,7 +27,7 @@ eval (direnv hook fish)
 alias uuidgen 'uuidgen | tr "[:upper:]" "[:lower:]"'
 
 # gnupg
-#source $HOME/.config/fish/gnupg.fish
+source $HOME/.config/fish/gnupg.fish
 
 # homeshick
 #source /usr/local/opt/homeshick/homeshick.fish

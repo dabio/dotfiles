@@ -38,28 +38,27 @@ base() {
 
     brew install \
         go \
+        dep \
+        gopass \
         tig \
         fish \
         unrar \
         p7zip \
         trash \
-        gnupg2 \
         mas \
         neovim \
         direnv
 
     brew cask install appzapper \
         firefox \
-        flux \
-        iterm2 \
         spotify \
-        sublime-text
+        sublime-text \
+        spectacle \
+        iterm2 \
+        keybase
 
     brew tap caskroom/fonts
     brew cask install font-source-code-pro
-
-    brew tap justwatchcom/gopass
-    brew install gopass
 
     # activate fish
     if ! grep -Fxq "$(brew --prefix)/bin/fish" /etc/shells; then
@@ -72,7 +71,7 @@ base() {
     chsh -s $(brew --prefix)/bin/fish
 
     mas install \
-        973049011 `# secrets`   \
+        `#973049011 `# secrets`   \
         `#409183694 # Keynote`  \
         409201541 `# Pages`     \
         409203825 `# Numbers`   \

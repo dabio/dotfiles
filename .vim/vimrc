@@ -6,12 +6,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'fatih/vim-go', { 'for': 'go' }
+Plug 'fatih/vim-go'
 "Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
 Plug 'ntpeters/vim-better-whitespace'
 "Plug 'puppetlabs/puppet-syntax-vim'
 "Plug 'saltstack/salt-vim'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
 
 " =========== color ===========
 Plug 'chriskempson/base16-vim'
@@ -92,7 +92,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 " center the screen
 nnoremap <space> zz
 
-let base16colorspace=256
+"let base16colorspace=256
 colorscheme base16-tomorrow-night
 "colorscheme base16-chalk
 "colorscheme base16-default-dark
@@ -100,7 +100,7 @@ colorscheme base16-tomorrow-night
 "colorscheme base16-twilight
 
 if has('nvim')
-  set termguicolors
+    set termguicolors
 endif
 
 " do not show stupid q: window
@@ -154,6 +154,7 @@ if has('autocmd')
 
     let g:go_fmt_command = "goimports"
     let g:go_metalinter_autosave = 1
+    " let g:go_auto_sameids = 1
 
     au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
     au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
@@ -162,6 +163,9 @@ if has('autocmd')
 
     " =========== vim-better-whitespace ===========
     au BufWritePre * StripWhitespace
+
+    " =========== ctrlp ===========
+    let g:ctrlp_user_command = ['.git', 'cd %s ; git ls-files -co --exclude-standard']
   augroup END
 
 endif
