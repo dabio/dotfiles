@@ -55,6 +55,7 @@ base() {
         sublime-text \
         spectacle \
         iterm2 \
+        flux \
         keybase
 
     brew tap caskroom/fonts
