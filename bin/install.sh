@@ -71,7 +71,7 @@ base() {
     chsh -s $(brew --prefix)/bin/fish
 
     mas install \
-        `#973049011 `# secrets`   \
+        `#973049011 # secrets`   \
         `#409183694 # Keynote`  \
         409201541 `# Pages`     \
         409203825 `# Numbers`   \
