@@ -1,4 +1,4 @@
-set nocompatible
+"set nocompatible
 
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
@@ -12,6 +12,7 @@ Plug 'ntpeters/vim-better-whitespace'
 "Plug 'puppetlabs/puppet-syntax-vim'
 "Plug 'saltstack/salt-vim'
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'hashivim/vim-terraform'
 
 " =========== color ===========
 Plug 'chriskempson/base16-vim'
@@ -50,7 +51,7 @@ set softtabstop=4
 set expandtab
 
 set visualbell
-set cursorline
+"set cursorline
 set ttyfast
 
 " vim feels more natural when split windows below and right
@@ -64,6 +65,7 @@ set nowritebackup
 
 " we show the mode with lightline
 set noshowmode
+set laststatus=2
 
 set lazyredraw
 
@@ -92,7 +94,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 " center the screen
 nnoremap <space> zz
 
-"let base16colorspace=256
+let base16colorspace=256
 colorscheme base16-tomorrow-night
 "colorscheme base16-chalk
 "colorscheme base16-default-dark
@@ -153,6 +155,7 @@ if has('autocmd')
     au Filetype go nmap <leader>c <Plug>(go-coverage-toggle)
 
     let g:go_fmt_command = "goimports"
+    let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
     let g:go_metalinter_autosave = 1
     " let g:go_auto_sameids = 1
 
@@ -160,6 +163,10 @@ if has('autocmd')
     au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
     au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
     au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
+
+    " =========== vim-terraform ===========
+    let g:terraform_align = 1
+    let g:terraform_fmt_on_save = 1
 
     " =========== vim-better-whitespace ===========
     au BufWritePre * StripWhitespace
