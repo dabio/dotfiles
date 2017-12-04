@@ -16,6 +16,7 @@ Plug 'hashivim/vim-terraform'
 
 " =========== color ===========
 Plug 'chriskempson/base16-vim'
+Plug 'whatyouhide/vim-gotham'
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-go', { 'do': 'make' }
@@ -69,9 +70,8 @@ set laststatus=2
 
 set lazyredraw
 
-let g:lightline = {
-  \ 'colorscheme': 'wombat',
-  \ }
+"let g:lightline = {'colorscheme': 'wombat'}
+let g:lightline = {'colorscheme': 'gotham'}
 
 " deactivate arrow keys
 nnoremap <up> <nop>
@@ -94,12 +94,13 @@ nnoremap <leader><space> :nohlsearch<CR>
 " center the screen
 nnoremap <space> zz
 
-let base16colorspace=256
-colorscheme base16-tomorrow-night
+"let base16colorspace=256
+"colorscheme base16-tomorrow-night
 "colorscheme base16-chalk
 "colorscheme base16-default-dark
 "colorscheme base16-classic-dark
 "colorscheme base16-irblack
+colorscheme gotham
 
 if has('nvim')
     set termguicolors
@@ -190,7 +191,7 @@ noremap <Leader>n :NERDTreeToggle<CR>
 noremap <Leader>f :NERDTreeFind<CR>
 
 let NERDTreeShowHidden = 1
-let NERDTreeIgnore = ['.DS_Store', '\.git$']
+let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
 
 " =========== deoplete ===========
 " if has('nvim')
