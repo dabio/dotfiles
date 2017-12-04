@@ -15,8 +15,8 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'hashivim/vim-terraform'
 
 " =========== color ===========
-Plug 'chriskempson/base16-vim'
-Plug 'whatyouhide/vim-gotham'
+"Plug 'chriskempson/base16-vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'zchee/deoplete-go', { 'do': 'make' }
@@ -70,9 +70,6 @@ set laststatus=2
 
 set lazyredraw
 
-"let g:lightline = {'colorscheme': 'wombat'}
-let g:lightline = {'colorscheme': 'gotham'}
-
 " deactivate arrow keys
 nnoremap <up> <nop>
 nnoremap <down> <nop>
@@ -100,7 +97,7 @@ nnoremap <space> zz
 "colorscheme base16-default-dark
 "colorscheme base16-classic-dark
 "colorscheme base16-irblack
-colorscheme gotham
+colorscheme nord
 
 if has('nvim')
     set termguicolors
@@ -180,6 +177,14 @@ if has('autocmd')
     let g:terraform_align = 1
     let g:terraform_remap_spacebar = 1
     let g:terraform_fmt_on_save = 1
+
+    " =========== nord ===========
+    let g:nord_italic_comments = 1
+    let g:nord_uniform_status_lines = 1
+
+    " =========== lightline ===========
+    "let g:lightline = {'colorscheme': 'wombat'}
+    let g:lightline = {'colorscheme': 'nord'}
 
   augroup END
 
