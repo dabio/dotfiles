@@ -91,14 +91,6 @@ nnoremap <leader><space> :nohlsearch<CR>
 " center the screen
 nnoremap <space> zz
 
-"let base16colorspace=256
-"colorscheme base16-tomorrow-night
-"colorscheme base16-chalk
-"colorscheme base16-default-dark
-"colorscheme base16-classic-dark
-"colorscheme base16-irblack
-colorscheme nord
-
 if has('nvim')
     set termguicolors
 endif
@@ -209,5 +201,13 @@ let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
 "   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 "   inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
 " endif
+
+"let base16colorspace=256
+"colorscheme base16-tomorrow-night
+"colorscheme base16-chalk
+"colorscheme base16-default-dark
+"colorscheme base16-classic-dark
+"colorscheme base16-irblack
+colorscheme nord
 
 " vim:ts=2:sw=2:et
