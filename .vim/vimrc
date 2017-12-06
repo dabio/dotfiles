@@ -45,10 +45,8 @@ set smartcase
 set showmatch
 set hlsearch
 
-set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set expandtab
 
 set visualbell
 "set cursorline
@@ -60,7 +58,6 @@ set splitright
 
 " don't use swapfile
 set noswapfile
-set nobackup
 set nowritebackup
 
 " we show the mode with lightline
@@ -91,11 +88,11 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <space> zz
 
 if has('nvim')
-"    set termguicolors
+  set termguicolors
 endif
 
 " do not show stupid q: window
-map q: :q
+nmap q: :q
 
 " allow saving of files as sudo when I forgot to start vim using sudo
 cmap w!! w !sudo tee > /dev/null %
@@ -108,7 +105,8 @@ if !empty(&viminfo)
 endif
 
 if has('autocmd')
-  filetype plugin indent on
+  " done by vim-plug
+  "filetype plugin indent on
   augroup vimrc
     au!
     " Re-source .vimrc on save so changes are effective immediately:
@@ -121,15 +119,6 @@ if has('autocmd')
   augroup syntax
     au!
 
-    " set tabs to 2
-    au FileType ruby setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    au FileType html setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    au FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    au FileType scss setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    au FileType css setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    au FileType yaml setlocal tabstop=2 shiftwidth=2 softtabstop=2
-    au FileType puppet setlocal tabstop=2 shiftwidth=2 softtabstop=2
-
     " syntax highlighting for .md files
     au BufRead,BufNewFile *.md set filetype=markdown
   augroup END
@@ -138,21 +127,11 @@ if has('autocmd')
     au!
 
     " =========== vim-go ===========
-    au Filetype go nmap <leader>b <Plug>(go-build)
-    au Filetype go nmap <leader>r <Plug>(go-run)
-    au Filetype go nmap <leader>t <Plug>(go-test)
-    au Filetype go nmap <leader>c <Plug>(go-coverage-toggle)
-
     let g:go_fmt_command = "goimports"
     let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
     let g:go_metalinter_autosave = 1
     let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
     " let g:go_auto_sameids = 1
-
-    au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-    au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-    au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-    au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 
     " =========== vim-terraform ===========
     let g:terraform_align = 1
@@ -214,8 +193,8 @@ let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
 "colorscheme base16-irblack
 colorscheme nord
 
-highlight DiffAdd cterm=bold ctermbg=none ctermfg=2
-highlight DiffDelete cterm=bold ctermbg=none ctermfg=1
-highlight DiffChange cterm=bold ctermbg=none ctermfg=3
+"highlight DiffAdd cterm=bold ctermbg=none ctermfg=2
+"highlight DiffDelete cterm=bold ctermbg=none ctermfg=1
+"highlight DiffChange cterm=bold ctermbg=none ctermfg=3
 
 " vim:ts=2:sw=2:et
