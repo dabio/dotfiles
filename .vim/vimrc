@@ -6,10 +6,7 @@ Plug 'itchyny/lightline.vim'
 "Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-"Plug 'docker/docker', { 'rtp': '/contrib/syntax/vim' }
 Plug 'ntpeters/vim-better-whitespace'
-"Plug 'puppetlabs/puppet-syntax-vim'
-"Plug 'saltstack/salt-vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'hashivim/vim-terraform'
 
@@ -24,6 +21,7 @@ Plug 'dabio/nord-vim', { 'branch': 'vim-signify' }
 " Initialize plugin system
 call plug#end()
 
+let g:ruby_host_prog = '~/.gem/ruby/2.3.0/bin/neovim-ruby-host'
 "let g:python_host_prog = '/Users/dan/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
 "let g:python3_host_prog = '/Users/dan/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
 
@@ -66,16 +64,6 @@ set noshowmode
 set laststatus=2
 
 set lazyredraw
-
-" deactivate arrow keys
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-inoremap <up> <nop>
-inoremap <down> <nop>
-inoremap <left> <nop>
-inoremap <right> <nop>
 
 " jump between split windows with ctrl-h,j,k,l
 nnoremap <C-h> <C-w>h
@@ -129,9 +117,7 @@ if has('autocmd')
 
     " =========== vim-go ===========
     let g:go_fmt_command = "goimports"
-    let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
     let g:go_metalinter_autosave = 1
-    let g:go_metalinter_autosave_enabled = ['vet', 'golint', 'errcheck']
     " let g:go_auto_sameids = 1
 
     " =========== vim-terraform ===========
