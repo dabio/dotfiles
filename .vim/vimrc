@@ -46,6 +46,7 @@ set hlsearch
 
 set shiftwidth=4
 set softtabstop=4
+set expandtab
 
 set visualbell
 "set cursorline
@@ -110,6 +111,8 @@ if has('autocmd')
 
     " syntax highlighting for .md files
     au BufRead,BufNewFile *.md set filetype=markdown
+    " syntax highlighting for .conf files
+    au BufRead,BufNewFile *.conf set filetype=conf
   augroup END
 
   augroup plugins
@@ -174,14 +177,6 @@ let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
 
 "let base16colorspace=256
 "colorscheme base16-tomorrow-night
-"colorscheme base16-chalk
-"colorscheme base16-default-dark
-"colorscheme base16-classic-dark
-"colorscheme base16-irblack
 colorscheme nord
-
-"highlight DiffAdd cterm=bold ctermbg=none ctermfg=2
-"highlight DiffDelete cterm=bold ctermbg=none ctermfg=1
-"highlight DiffChange cterm=bold ctermbg=none ctermfg=3
 
 " vim:ts=2:sw=2:et

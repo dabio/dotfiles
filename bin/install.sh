@@ -104,6 +104,8 @@ install_vim() {
 
     ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
 
+    gem install --install-dir /Users/dan/.gem/ruby/2.3.0 neovim
+
     # alias vim dotfiles to neovim
     mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
     ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
