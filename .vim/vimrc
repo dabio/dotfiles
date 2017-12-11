@@ -1,12 +1,12 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'
+"Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
 "Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-Plug 'ntpeters/vim-better-whitespace'
+"Plug 'ntpeters/vim-better-whitespace'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'hashivim/vim-terraform'
 
@@ -94,6 +94,13 @@ if !empty(&viminfo)
   set viminfo^=!
 endif
 
+" plugins
+function! s:StripTrailingWhitespace(...)
+  let l:saved_winview = winsaveview()
+  keeppatterns %s/\v\s+$//e
+  call winrestview(l:saved_winview)
+endfunction
+
 if has('autocmd')
   " done by vim-plug
   "filetype plugin indent on
@@ -127,8 +134,8 @@ if has('autocmd')
     let g:terraform_align = 1
     let g:terraform_fmt_on_save = 1
 
-    " =========== vim-better-whitespace ===========
-    au BufWritePre * StripWhitespace
+    " =========== plugin clean whitespaces ===========
+    au BufWritePre * call s:StripTrailingWhitespace()
 
     " =========== ctrlp ===========
     let g:ctrlp_user_command = ['.git', 'cd %s ; git ls-files -co --exclude-standard']
@@ -151,17 +158,23 @@ if has('autocmd')
     let g:signify_sign_show_count = 0
     let g:signify_sign_change = '~'
 
+    let g:netrw_winsize = 20
+    let g:netrw_banner = 0
+    let g:netrw_liststyle = 3
+    let g:netrw_browse_split = 4
+    let g:netrw_list_hide='\.DS_Store,\.git,\.hg/'
+
   augroup END
 
 endif
 
 " =========== NerdTree ===========
-nmap <C-n> :NERDTreeToggle<CR>
-noremap <Leader>n :NERDTreeToggle<CR>
-noremap <Leader>f :NERDTreeFind<CR>
-
-let NERDTreeShowHidden = 1
-let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
+" nmap <C-n> :NERDTreeToggle<CR>
+" noremap <Leader>n :NERDTreeToggle<CR>
+" noremap <Leader>f :NERDTreeFind<CR>
+"
+" let NERDTreeShowHidden = 1
+" let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
 
 " =========== deoplete ===========
 " if has('nvim')
