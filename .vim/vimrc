@@ -161,6 +161,8 @@ if has('autocmd')
       \| au BufLeave <buffer> set laststatus=2 showmode ruler
     " map ctrl p to fzf
     nmap <C-p> :FZF<CR>
+    " respecting gitignore and hgignore
+    let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
   augroup END
 endif

@@ -47,7 +47,8 @@ base() {
         trash \
         mas \
         neovim \
-        direnv
+        direnv \
+        the_silver_searcher
 
     brew cask install appzapper \
         firefox \
