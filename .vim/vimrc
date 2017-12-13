@@ -1,29 +1,25 @@
 " Specify a directory for plugins
 call plug#begin('~/.vim/plugged')
 
-"Plug 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 Plug 'itchyny/lightline.vim'
-"Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
-"Plug 'ntpeters/vim-better-whitespace'
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'hashivim/vim-terraform'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " =========== color ===========
 "Plug 'chriskempson/base16-vim'
 "Plug 'arcticicestudio/nord-vim'
 Plug 'dabio/nord-vim', { 'branch': 'vim-signify' }
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-go', { 'do': 'make' }
-
 " Initialize plugin system
 call plug#end()
 
 let g:ruby_host_prog = '~/.gem/ruby/2.3.0/bin/neovim-ruby-host'
-"let g:python_host_prog = '/Users/dan/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
-"let g:python3_host_prog = '/Users/dan/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
+"let g:python_host_prog = '~/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
+"let g:python3_host_prog = '~/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
 
 " neovim sensible
 " Use "hybrid" (both absolute and relative) line numbers
@@ -96,9 +92,11 @@ endif
 
 " plugins
 function! s:StripTrailingWhitespace(...)
-  let l:saved_winview = winsaveview()
-  keeppatterns %s/\v\s+$//e
-  call winrestview(l:saved_winview)
+  if !&binary && &filetype != 'diff'
+    let l:saved_winview = winsaveview()
+    keeppatterns %s/\v\s+$//e
+    call winrestview(l:saved_winview)
+  endif
 endfunction
 
 if has('autocmd')
@@ -137,9 +135,6 @@ if has('autocmd')
     " =========== plugin clean whitespaces ===========
     au BufWritePre * call s:StripTrailingWhitespace()
 
-    " =========== ctrlp ===========
-    let g:ctrlp_user_command = ['.git', 'cd %s ; git ls-files -co --exclude-standard']
-
     " =========== terraform ===========
     let g:terraform_align = 1
     let g:terraform_remap_spacebar = 1
@@ -158,35 +153,25 @@ if has('autocmd')
     let g:signify_sign_show_count = 0
     let g:signify_sign_change = '~'
 
-    let g:netrw_winsize = 20
-    let g:netrw_banner = 0
-    let g:netrw_liststyle = 3
-    let g:netrw_browse_split = 4
-    let g:netrw_list_hide='\.DS_Store,\.git,\.hg/'
+    " =========== fzf ===========
+    let g:fzf_layout = { 'down': '~20%' }
+    " hide statusline
+    au! Filetype fzf
+    au Filetype fzf set laststatus=0 noshowmode noruler
+      \| au BufLeave <buffer> set laststatus=2 showmode ruler
+    " map ctrl p to fzf
+    nmap <C-p> :FZF<CR>
 
   augroup END
-
 endif
 
 " =========== NerdTree ===========
-" nmap <C-n> :NERDTreeToggle<CR>
-" noremap <Leader>n :NERDTreeToggle<CR>
-" noremap <Leader>f :NERDTreeFind<CR>
-"
-" let NERDTreeShowHidden = 1
-" let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
+nmap <C-n> :NERDTreeToggle<CR>
+noremap <Leader>n :NERDTreeToggle<CR>
+noremap <Leader>f :NERDTreeFind<CR>
 
-" =========== deoplete ===========
-" if has('nvim')
-"   let g:deoplete#enable_at_startup = 1
-"
-"   let g:deoplete#sources#go#sort_class = ['func', 'type', 'var', 'const']
-"   let g:deoplete#sources#go#align_class = 1
-"
-"   " deoplete tab-complete
-"   inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-"   inoremap <expr><s-tab> pumvisible() ? "\<c-p>" : "\<tab>"
-" endif
+let NERDTreeShowHidden = 1
+let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
 
 "let base16colorspace=256
 "colorscheme base16-tomorrow-night
