@@ -80,11 +80,6 @@ endif
 " do not show stupid q: window
 nnoremap q: :q
 
-" start terminal in vertical split
-nnoremap <leader>t :vs<CR>:te<CR>A
-" exit from terminal mode using ESC key
-tnoremap <Esc> <C-\><C-n>
-
 " allow saving of files as sudo when I forgot to start vim using sudo
 cnoremap w!! w !sudo tee > /dev/null %
 
@@ -135,19 +130,16 @@ if has('autocmd')
 
     " =========== vim-terraform ===========
     let g:terraform_align = 1
+    let g:terraform_remap_spacebar = 1
     let g:terraform_fmt_on_save = 1
 
     " =========== plugin clean whitespaces ===========
     au BufWritePre * call s:StripTrailingWhitespace()
 
-    " =========== terraform ===========
-    let g:terraform_align = 1
-    let g:terraform_remap_spacebar = 1
-    let g:terraform_fmt_on_save = 1
-
     " =========== nord ===========
     let g:nord_italic_comments = 1
     let g:nord_uniform_status_lines = 1
+    let g:nord_uniform_diff_background = 1
 
     " =========== lightline ===========
     "let g:lightline = {'colorscheme': 'wombat'}
