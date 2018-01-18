@@ -11,8 +11,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " =========== color ===========
 "Plug 'chriskempson/base16-vim'
-"Plug 'arcticicestudio/nord-vim'
-Plug 'dabio/nord-vim', { 'branch': 'vim-signify' }
+Plug 'arcticicestudio/nord-vim'
+"Plug 'dabio/nord-vim', { 'branch': 'vim-signify' }
 
 " Initialize plugin system
 call plug#end()
@@ -74,7 +74,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <space> zz
 
 if has('nvim')
-  set termguicolors
+"  set termguicolors
 endif
 
 " do not show stupid q: window
