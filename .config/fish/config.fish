@@ -1,5 +1,6 @@
 # To enable shims and autocompletion for rbenv.
 #status --is-interactive; and . (rbenv init -|psub)
+#status --is-interactive; and source (nodenv init -|psub)
 
 # Postgres
 if test -d /Applications/Postgres.app/Contents/Versions/latest/bin
@@ -10,6 +11,11 @@ end
 set -x GOPATH $HOME/Sites/go
 if test -d $GOPATH/bin
     set -x PATH $PATH $GOPATH/bin
+end
+
+# ruby gems
+if test -d $HOME/.gem/ruby/2.3.0/bin
+    set -x PATH $PATH $HOME/.gem/ruby/2.3.0/bin
 end
 
 status --is-interactive ; and eval sh $HOME/.dotfiles/.config/base16-shell/scripts/base16-default-dark.sh
