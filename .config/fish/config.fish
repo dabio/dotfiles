@@ -17,8 +17,8 @@ status --is-interactive ; and eval sh $HOME/.dotfiles/.config/base16-shell/scrip
 # Homebrew
 #set -x HOMEBREW_CASK_OPTS --appdir=$HOME/Applications
 
-set -x EDITOR /usr/local/bin/nvim
-set -x DOCKER_API_VERSION 1.22
+set -x EDITOR /usr/bin/vim
+#set -x DOCKER_API_VERSION 1.22
 
 # direnv
 eval (direnv hook fish)
