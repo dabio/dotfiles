@@ -46,7 +46,6 @@ base() {
         p7zip \
         trash \
         mas \
-        neovim \
         direnv \
         the_silver_searcher
 
@@ -55,7 +54,6 @@ base() {
         spotify \
         sublime-text \
         spectacle \
-        iterm2 \
         flux \
         keybase
 
@@ -66,10 +64,11 @@ base() {
     if ! grep -Fxq "$(brew --prefix)/bin/fish" /etc/shells; then
         echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells > /dev/null
     fi
-    if [ ! -f "${HOME}/.config/fish/startup.fish" ]; then
-        curl -fLo "${HOME}/.config/fish/startup.fish" --create-dirs \
-            "https://iterm2.com/misc/fish_startup.in"
-    fi
+    # iterm2
+    #if [ ! -f "${HOME}/.config/fish/startup.fish" ]; then
+    #    curl -fLo "${HOME}/.config/fish/startup.fish" --create-dirs \
+    #        "https://iterm2.com/misc/fish_startup.in"
+    #fi
     chsh -s $(brew --prefix)/bin/fish
 
     mas install \
@@ -105,15 +104,15 @@ install_vim() {
 
     ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
 
-    gem install --install-dir /Users/dan/.gem/ruby/2.3.0 neovim
+    #gem install --install-dir /Users/dan/.gem/ruby/2.3.0 neovim
 
     # alias vim dotfiles to neovim
     mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
     ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
     ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
-    ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vim"
-    ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vi"
+    #ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vim"
+    #ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vi"
 
     curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
         "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
