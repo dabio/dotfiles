@@ -17,3 +17,6 @@
 
 # direnv
 /.config/direnv
+
+# tmux
+/.tmux/plugins/
