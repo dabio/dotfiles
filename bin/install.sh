@@ -120,11 +120,43 @@ install_vim() {
     )
 }
 
+install_alacritty() {
+    # create subshell
+    (
+    printf "Installing alacritty"
+    # install tmux
+    if ! hash tmux 2>/dev/null ; then
+        brew install tmux
+    fi
+    # install rustup
+    if ! hash rustup-init 2>/dev/null ; then
+        brew install rustup-init
+    fi
+    # install rust
+    if ! hash cargo 2>/dev/null ; then
+        rustup-init --no-modify-path
+    fi
+
+    source ~/.config/fish/config.fish
+
+    git clone https://github.com/jwilm/alacritty.git /tmp/alacritty
+    cd /tmp/alacritty
+    rustup override set stable
+    rustup update stable
+    cargo build --release
+    make app
+    sudo cp -r target/release/osx/Alacritty.app /Applications/
+
+    printf "Alacritty installation finished"
+    )
+}
+
 usage() {
     echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
     echo "Usage:"
     echo "  sources     - setup sources & install base pkgs"
     echo "  dotfiles    - get dotfiles"
+    echo "  terminal    - install alacritty terminal"
     echo "  vim         - install vim"
 }
 
@@ -140,6 +172,8 @@ main() {
         base
     elif [[ $cmd == "dotfiles" ]]; then
         get_dotfiles
+    elif [[ $cmd == "terminal" ]]; then
+        install_alacritty
     elif [[ $cmd == "vim" ]]; then
         install_vim
     fi
