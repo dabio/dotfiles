@@ -23,12 +23,16 @@ if test -d $HOME/.cargo/bin
     set -x PATH $PATH $HOME/.cargo/bin
 end
 
+# nvim
+if command --search nvim > /dev/null do
+    alias vim "nvim"
+end
+
 status --is-interactive ; and eval sh $HOME/.dotfiles/.config/base16-shell/scripts/base16-default-dark.sh
 
 # Homebrew
 #set -x HOMEBREW_CASK_OPTS --appdir=$HOME/Applications
 
-set -x EDITOR /usr/bin/vim
 #set -x DOCKER_API_VERSION 1.22
 
 # direnv

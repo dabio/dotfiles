@@ -112,9 +112,6 @@ install_vim() {
     ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
     ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
-    ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vim"
-    ln -snf "/usr/local/bin/nvim" "/usr/local/bin/vi"
-
     curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
         "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     )
