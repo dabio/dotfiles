@@ -26,7 +26,10 @@ end
 # nvim
 if command --search nvim > /dev/null do
     alias vim "nvim"
+    alias vi "nvim"
 end
+
+set -x EDITOR vim
 
 status --is-interactive ; and eval sh $HOME/.dotfiles/.config/base16-shell/scripts/base16-default-dark.sh
 
