@@ -1,0 +1,32 @@
+"*":
+  core:
+    disabledPackages: [
+      "exception-reporting"
+    ]
+    telemetryConsent: "no"
+    themes: [
+      "nord-atom-ui"
+      "nord-atom-syntax"
+    ]
+  editor:
+    fontFamily: "SFMono-Light"
+    fontSize: 12
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    softWrapAtPreferredLineLength: true
+    tabLength: 4
+  "exception-reporting": {}
+  "go-plus":
+    format: {}
+    lint: {}
+    panel:
+      fontSize: "12px"
+    test:
+      coverageDisplayMode: "gutter"
+      runTestsOnSave: false
+  "nord-atom-syntax":
+    accessibility: {}
+  tabs: {}
+  welcome:
+    showOnStartup: false

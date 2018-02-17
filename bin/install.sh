@@ -53,6 +53,7 @@ base() {
     brew cask install appzapper \
         firefox \
         spotify \
+        atom \
         sublime-text \
         spectacle \
         flux \
@@ -71,6 +72,10 @@ base() {
     #        "https://iterm2.com/misc/fish_startup.in"
     #fi
     chsh -s $(brew --prefix)/bin/fish
+
+    # atom
+    apm login
+    apm stars --install
 
     mas install \
         `#973049011 # secrets`   \
