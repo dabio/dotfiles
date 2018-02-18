@@ -1,7 +1,22 @@
 "*":
+  "command-palette": {}
   core:
     disabledPackages: [
       "exception-reporting"
+      "language-c"
+      "language-clojure"
+      "language-csharp"
+      "language-java"
+      "language-less"
+      "language-mustache"
+      "language-objective-c"
+      "language-perl"
+      "language-python"
+      "language-ruby"
+      "language-ruby-on-rails"
+      "language-typescript"
+      "metrics"
+      "styleguide"
     ]
     telemetryConsent: "no"
     themes: [
@@ -27,6 +42,11 @@
       runTestsOnSave: false
   "nord-atom-syntax":
     accessibility: {}
+  "nord-atom-ui":
+    darkerFormFocusEffect: true
   tabs: {}
   welcome:
     showOnStartup: false
+".source.toml":
+  editor:
+    tabLength: 2
