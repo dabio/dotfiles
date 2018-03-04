@@ -29,6 +29,16 @@ if command --search nvim > /dev/null do
     alias vi "nvim"
 end
 
+# pyenv
+if command --search pyenv > /dev/null do
+    status --is-interactive; and source (pyenv init -|psub)
+end
+
+# trash
+if command --search trash > /dev/null do
+    alias rm "trash"
+end
+
 set -x EDITOR vim
 
 status --is-interactive ; and eval sh $HOME/.dotfiles/.config/base16-shell/scripts/base16-default-dark.sh
