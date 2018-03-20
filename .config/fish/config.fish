@@ -23,13 +23,14 @@ if status --is-login
         set -x PATH $PATH $HOME/.cargo/bin
     end
 
-    EDITOR=vim
+    set editor /usr/bin/vim
     # nvim
     if command --search nvim > /dev/null do
         alias vim "nvim"
         alias vi "nvim"
-        export EDITOR=nvim
+        set editor /usr/local/bin/nvim
     end
+    set -x EDITOR editor
 
     # trash
     if command --search trash > /dev/null do
