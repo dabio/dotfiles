@@ -4,20 +4,22 @@
 
 ---
 - 
-  category: default
+  category: themes
   local: false
   name: "arcticicestudio/nord-vim"
-  opt: false
+  opt: true
 - 
   category: default
   local: false
   name: ctrlpvim/ctrlp.vim
   opt: false
 - 
-  category: default
+  category: lang
+  for: 
+    - go
   local: false
   name: "fatih/vim-go"
-  opt: false
+  opt: true
 - 
   category: default
   local: false
