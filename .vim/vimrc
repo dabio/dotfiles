@@ -120,14 +120,6 @@ if has('autocmd')
   augroup END
 endif
 
-" =========== NerdTree ===========
-nmap <C-n> :NERDTreeToggle<CR>
-noremap <Leader>n :NERDTreeToggle<CR>
-noremap <Leader>f :NERDTreeFind<CR>
-
-let NERDTreeShowHidden = 1
-let NERDTreeIgnore = ['.DS_Store', '\.git$', '\.hg$']
-
 "let base16colorspace=256
 "colorscheme base16-tomorrow-night
 colorscheme nord

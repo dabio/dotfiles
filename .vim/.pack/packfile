@@ -19,7 +19,7 @@
     - go
   local: false
   name: "fatih/vim-go"
-  opt: true
+  opt: false
 - 
   category: default
   local: false
@@ -34,6 +34,11 @@
   category: default
   local: false
   name: "mhinz/vim-signify"
+  opt: false
+- 
+  category: lang
+  local: false
+  name: "mitsuhiko/vim-rst"
   opt: false
 - 
   category: default

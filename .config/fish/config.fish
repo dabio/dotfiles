@@ -30,7 +30,7 @@ if status --is-login
         alias vi "nvim"
         set editor /usr/local/bin/nvim
     end
-    set -x EDITOR editor
+    set -x EDITOR $editor
 
     # trash
     if command --search trash > /dev/null do
