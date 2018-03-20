@@ -23,10 +23,12 @@ if status --is-login
         set -x PATH $PATH $HOME/.cargo/bin
     end
 
+    EDITOR=vim
     # nvim
     if command --search nvim > /dev/null do
         alias vim "nvim"
         alias vi "nvim"
+        export EDITOR=nvim
     end
 
     # trash
@@ -38,7 +40,6 @@ if status --is-login
         eval sh $HOME/.dotfiles/.config/base16-shell/scripts/base16-default-dark.sh
     end
 
-    export EDITOR=vim
     # Don't write bytecode, Python!
     export PYTHONDONTWRITEBYTECODE=1
 

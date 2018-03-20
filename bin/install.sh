@@ -6,6 +6,9 @@ set -e
 
 USERNAME=$(echo $USER)
 
+# Versions
+PACK="0.2.1"
+
 check_is_sudo() {
     CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
     if [ ${CAN_RUN_SUDO} -eq 0 ]; then
@@ -47,8 +50,7 @@ base() {
         trash \
         mas \
         neovim \
-        direnv \
-        the_silver_searcher
+        direnv
 
     brew cask install appzapper \
         firefox \
@@ -117,8 +119,10 @@ install_vim() {
     ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
     ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
-    curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs \
-        "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
+    rm README.md
+    mv pack ${HOME}/.dotfiles/bin
+    pack install
     )
 }
 

@@ -2,6 +2,9 @@
 /.vim/autoload/
 /.vim/plugged/
 /.vim/colors/
+/.vim/pack/
+/.vim/plugin/
+/bin/pack
 
 # mac
 .DS_Store
