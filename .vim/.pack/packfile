@@ -15,10 +15,13 @@
   opt: false
 - 
   category: lang
-  for: 
-    - go
   local: false
   name: "fatih/vim-go"
+  opt: false
+- 
+  category: lang
+  local: false
+  name: "hashivim/vim-terraform"
   opt: false
 - 
   category: default
