@@ -1,6 +1,6 @@
 let g:ruby_host_prog = '~/.gem/ruby/2.3.0/bin/neovim-ruby-host'
-"let g:python_host_prog = '~/.pyenv/versions/2.7.13/envs/neovim2/bin/python'
-"let g:python3_host_prog = '~/.pyenv/versions/3.6.0/envs/neovim3/bin/python'
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
 
 " neovim sensible
 " Use "hybrid" (both absolute and relative) line numbers
