@@ -113,6 +113,9 @@ install_vim() {
     ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
 
     gem install --install-dir /Users/dan/.gem/ruby/2.3.0 neovim
+    pip3 install --user --upgrade neovim
+    /usr/bin/easy_install --user pip
+    ${HOME}/Library/Python/2.7/bin/pip2 install --user --upgrade neovim
 
     # alias vim dotfiles to neovim
     mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
