@@ -7,7 +7,7 @@ set -e
 USERNAME=$(echo $USER)
 
 # Versions
-PACK="0.2.1"
+PACK="0.2.2"
 
 check_is_sudo() {
     CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
@@ -125,6 +125,7 @@ install_vim() {
     curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
     rm README.md
     mv pack ${HOME}/.dotfiles/bin
+    ln -snf ${HOME}/.dotfiles/bin/pack /usr/local/bin/pack
     pack install
     )
 }

@@ -23,6 +23,11 @@ if status --is-login
         set -x PATH $PATH $HOME/.cargo/bin
     end
 
+    # python3
+    if test -d $HOME/Library/Python/3.6/bin
+        set -x PATH $PATH $HOME/Library/Python/3.6/bin
+    end
+
     set editor /usr/bin/vim
     # nvim
     if command --search nvim > /dev/null do
