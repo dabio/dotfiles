@@ -87,9 +87,9 @@ function! s:StripTrailingWhitespace(...)
 endfunction
 
 if has('autocmd')
-  " done by vim-plug
-  "filetype plugin indent on
   augroup vimrc
+    filetype plugin indent on
+
     au!
     " Re-source .vimrc on save so changes are effective immediately:
     au BufWritePost vimrc nested source %
@@ -115,8 +115,12 @@ if has('autocmd')
   augroup END
 endif
 
+if has('syntax') && !exists('g:syntax_on')
+  syntax enable
+endif
+
 "let base16colorspace=256
 "colorscheme base16-tomorrow-night
 colorscheme nord
 
-" vim:ts=2:sw=2:et
+" vim:set ts=2 et sw=2:

@@ -55,14 +55,14 @@ base() {
     brew cask install appzapper \
         firefox \
         spotify \
-        atom \
+#        atom \
         sublime-text \
         spectacle \
         flux \
         keybase
 
-    brew tap caskroom/fonts
-    brew cask install font-source-code-pro
+#    brew tap caskroom/fonts
+#    brew cask install font-source-code-pro
 
     # activate fish
     if ! grep -Fxq "$(brew --prefix)/bin/fish" /etc/shells; then
@@ -76,8 +76,8 @@ base() {
     chsh -s $(brew --prefix)/bin/fish
 
     # atom
-    apm login
-    apm stars --install
+#    apm login
+#    apm stars --install
 
     mas install \
         `#973049011 # secrets`   \
