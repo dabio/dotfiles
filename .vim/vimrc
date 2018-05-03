@@ -1,8 +1,3 @@
-let g:ruby_host_prog = '~/.gem/ruby/2.3.0/bin/neovim-ruby-host'
-let g:python_host_prog = '/usr/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
-" neovim sensible
 " Use "hybrid" (both absolute and relative) line numbers
 set number
 set relativenumber
@@ -25,7 +20,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 
-set visualbell
+"set visualbell
 "set cursorline
 set ttyfast
 
@@ -76,6 +71,15 @@ endif
 if !empty(&viminfo)
   set viminfo^=!
 endif
+
+" autocomplete closing brackets
+"ino " ""<left>
+"ino ' ''<left>
+"ino ( ()<left>
+"ino [ []<left>
+"ino { {}<left>
+"ino {<CR> {<CR>}<ESC>0
+"ino {;<CR> {<CR>};<ESC>0
 
 " plugins
 function! s:StripTrailingWhitespace(...)
