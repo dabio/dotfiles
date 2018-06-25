@@ -14,16 +14,6 @@
   name: ctrlpvim/ctrlp.vim
   opt: false
 - 
-  category: lang
-  local: false
-  name: "fatih/vim-go"
-  opt: false
-- 
-  category: lang
-  local: false
-  name: "hashivim/vim-terraform"
-  opt: false
-- 
   category: default
   local: false
   name: itchyny/lightline.vim
@@ -31,20 +21,15 @@
 - 
   category: default
   local: false
-  name: junegunn/goyo.vim
-  opt: false
-- 
-  category: default
-  local: false
   name: "mhinz/vim-signify"
-  opt: false
-- 
-  category: lang
-  local: false
-  name: "mitsuhiko/vim-rst"
   opt: false
 - 
   category: default
   local: false
   name: scrooloose/nerdtree
+  opt: false
+- 
+  category: default
+  local: false
+  name: "sheerun/vim-polyglot"
   opt: false
