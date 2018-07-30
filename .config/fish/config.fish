@@ -24,8 +24,8 @@ if status --is-login
     end
 
     # python3
-    if test -d $HOME/Library/Python/3.6/bin
-        set -x PATH $PATH $HOME/Library/Python/3.6/bin
+    if test -d $HOME/Library/Python/3.7/bin
+        set -x PATH $PATH $HOME/Library/Python/3.7/bin
     end
 
 #    set editor /usr/bin/vim
