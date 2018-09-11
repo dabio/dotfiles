@@ -48,7 +48,7 @@ if status --is-login
     end
 
     # Don't write bytecode, Python!
-    export PYTHONDONTWRITEBYTECODE=1
+    set PYTHONDONTWRITEBYTECODE 1
 
     # direnv
     eval (direnv hook fish)
