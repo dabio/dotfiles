@@ -7,7 +7,7 @@ set -e
 USERNAME=$(echo $USER)
 
 # Versions
-PACK="0.2.2"
+PACK="0.2.3"
 
 check_is_sudo() {
     CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
@@ -18,7 +18,7 @@ check_is_sudo() {
 }
 
 # sets up brew
-setup_sources() {
+setup_brew() {
     # installs command line tools
     local status=$(xcode-select -p)
     if [ "$status" -eq "$status" ] 2> /dev/null; then
@@ -28,38 +28,34 @@ setup_sources() {
     if ! hash brew 2>/dev/null ; then
         # install homebrew https://brew.sh
         /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        find /usr/local -type d -depth 1 -exec chown -R dan:staff {} \;
     fi
 
     brew doctor
-    brew update
-}
-
-base() {
     brew analytics off
     brew update
     brew upgrade
 
     brew install \
-        go \
         dep \
-        gopass \
-        tig \
+        direnv \
         fish \
-        unrar \
-        p7zip \
-        trash \
+        go \
+        gopass \
         mas \
-        neovim \
-        direnv
+        p7zip \
+        python3 \
+        tig \
+        trash \
+        unrar
 
-    brew cask install appzapper \
+    brew cask install \
+        appzapper \
         firefox \
-        spotify \
-#        atom \
-        sublime-text \
-        spectacle \
         flux \
-        keybase
+        spectacle \
+        spotify \
+        sublime-text
 
 #    brew tap caskroom/fonts
 #    brew cask install font-source-code-pro
@@ -79,12 +75,12 @@ base() {
 #    apm login
 #    apm stars --install
 
-    mas install \
-        `#973049011 # secrets`   \
-        `#409183694 # Keynote`  \
-        409201541 `# Pages`     \
-        409203825 `# Numbers`   \
-        418138339 `# HTTP Client`
+#    mas install \
+#        `#973049011 # secrets`   \
+#        `#409183694 # Keynote`  \
+#        409201541 `# Pages`     \
+#        409203825 `# Numbers`   \
+#        418138339 `# HTTP Client`
 }
 
 get_dotfiles() {
@@ -102,6 +98,13 @@ get_dotfiles() {
 
     # installs all the things
     make
+
+    # imports the gpg keys
+    gpg --import "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/gpg/gpg.asc"
+    # copy ssh keys
+    if [ ! -d "${HOME}/.ssh" ]; then
+        cp -R "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/ssh/" ~/.ssh
+    fi
     )
 }
 
@@ -118,55 +121,42 @@ install_vim() {
     #${HOME}/Library/Python/2.7/bin/pip2 install --user --upgrade neovim
 
     # alias vim dotfiles to neovim
-    mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-    ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
-    ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
+    #mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
+    #ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
+    #ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
 
-    curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
-    rm README.md
-    mv pack ${HOME}/.dotfiles/bin
-    ln -snf ${HOME}/.dotfiles/bin/pack /usr/local/bin/pack
+    if ! hash pack 2>/dev/null ; then
+        curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
+        rm README.md
+        mv pack ${HOME}/.dotfiles/bin
+        ln -snf ${HOME}/.dotfiles/bin/pack /usr/local/bin/pack
+    fi
     pack install
     )
 }
 
-install_alacritty() {
+install_pip() {
     # create subshell
     (
-    printf "Installing alacritty"
-    # install tmux
-    if ! hash tmux 2>/dev/null ; then
-        brew install tmux
-    fi
-    # install rustup
-    if ! hash rustup-init 2>/dev/null ; then
-        brew install rustup-init
-    fi
-    # install rust
-    if ! hash cargo 2>/dev/null ; then
-        rustup-init --no-modify-path
+    # check if pip3 is installed
+    if ! hash pip3 2>/dev/null ; then
+        echo "Please run 'install.sh brew' to install python3 dependencies first."
+        exit
     fi
 
-    source ~/.config/fish/config.fish
+    pip3 install --user \
+        awscli
 
-    git clone https://github.com/jwilm/alacritty.git /tmp/alacritty
-    cd /tmp/alacritty
-    rustup override set stable
-    rustup update stable
-    cargo build --release
-    make app
-    sudo cp -r target/release/osx/Alacritty.app /Applications/
-
-    printf "Alacritty installation finished"
     )
 }
 
 usage() {
     echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
     echo "Usage:"
-    echo "  sources     - setup sources & install base pkgs"
+    echo "  all         - do everything"
+    echo "  brew        - setup homebrew & install base pkgs"
     echo "  dotfiles    - get dotfiles"
-    echo "  terminal    - install alacritty terminal"
+    echo "  pip         - install pip packages"
     echo "  vim         - install vim"
 }
 
@@ -177,13 +167,17 @@ main() {
         exit 1
     fi
 
-    if [[ $cmd == "sources" ]]; then
-        setup_sources
-        base
+    if [[ $cmd == "all" ]]; then
+        setup_brew
+        get_dotfiles
+        install_vim
+        install_pip
+    elif [[ $cmd == "brew" ]]; then
+        setup_brew
     elif [[ $cmd == "dotfiles" ]]; then
         get_dotfiles
-    elif [[ $cmd == "terminal" ]]; then
-        install_alacritty
+    elif [[ $cmd == "pip" ]]; then
+        install_pip
     elif [[ $cmd == "vim" ]]; then
         install_vim
     fi
