@@ -36,6 +36,7 @@ brew_packages() {
     mas \
     p7zip \
     python \
+    terraform \
     tig \
     trash \
     unrar
@@ -47,6 +48,10 @@ brew_packages() {
     spectacle \
     spotify \
     sublime-text
+
+  # cleanup
+  brew cleanup -s
+  rm -fr $(brew --cache)
 
   echo "🎉 brew packages install successful"
   )
