@@ -1,186 +1,154 @@
-#!/usr/bin/env bash
-set -e
+#!/bin/bash
 
-# install.sh
-#	This script installs my basic setup for a mac laptop
-
-USERNAME=$(echo $USER)
-
-# Versions
+# Version definitions
 PACK="0.2.3"
 
-check_is_sudo() {
-    CAN_RUN_SUDO=$(sudo -n uptime 2>&1 | grep "load" | wc -l)
-    if [ ${CAN_RUN_SUDO} -eq 0 ]; then
-        echo "Please run as root."
-        exit
-    fi
-}
-
-# sets up brew
 setup_brew() {
-    # installs command line tools
-    local status=$(xcode-select -p)
-    if [ "$status" -eq "$status" ] 2> /dev/null; then
-        xcode-select --install
-    fi
+  (
+  local status=$(xcode-select -p)
+  if [ "$status" -eq "$status" ] 2> /dev/null; then
+    xcode-select --install
+  fi
 
-    if ! hash brew 2>/dev/null ; then
-        # install homebrew https://brew.sh
-        /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-        find /usr/local -type d -depth 1 -exec chown -R dan:staff {} \;
-    fi
+  if ! hash brew 2> /dev/null; then
+    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    find /usr/local -type d -depth 1 -exec chown -R dan:staff {} \;
+  fi
 
-    brew doctor
-    brew analytics off
-    brew update
-    brew upgrade
+  brew doctor
+  brew analytics off
+  brew update
+  brew upgrade
 
-    brew install \
-        dep \
-        direnv \
-        fish \
-        go \
-        gopass \
-        mas \
-        p7zip \
-        python3 \
-        tig \
-        trash \
-        unrar
-
-    brew cask install \
-        appzapper \
-        firefox \
-        flux \
-        spectacle \
-        spotify \
-        sublime-text
-
-#    brew tap caskroom/fonts
-#    brew cask install font-source-code-pro
-
-    # activate fish
-    if ! grep -Fxq "$(brew --prefix)/bin/fish" /etc/shells; then
-        echo "$(brew --prefix)/bin/fish" | sudo tee -a /etc/shells > /dev/null
-    fi
-    # iterm2
-    #if [ ! -f "${HOME}/.config/fish/startup.fish" ]; then
-    #    curl -fLo "${HOME}/.config/fish/startup.fish" --create-dirs \
-    #        "https://iterm2.com/misc/fish_startup.in"
-    #fi
-    chsh -s $(brew --prefix)/bin/fish
-
-    # atom
-#    apm login
-#    apm stars --install
-
-#    mas install \
-#        `#973049011 # secrets`   \
-#        `#409183694 # Keynote`  \
-#        409201541 `# Pages`     \
-#        409203825 `# Numbers`   \
-#        418138339 `# HTTP Client`
+  echo "🎉 brew install successful"
+  )
 }
 
-get_dotfiles() {
-    # create subshell
-    (
-    cd "$HOME"
+brew_packages() {
+  (
+  setup_brew
 
-    if [ ! -d "${HOME}/.dotfiles" ]; then
-        # install dotfiles from repo
-        git clone \
-            https://github.com/dabio/dotfiles.git \
-            "${HOME}/.dotfiles"
-    fi
-    cd "${HOME}/.dotfiles"
+  brew install \
+    direnv \
+    fish \
+    go \
+    gopass \
+    mas \
+    p7zip \
+    python \
+    tig \
+    trash \
+    unrar
 
-    # installs all the things
-    make
+  brew cask install \
+    appzapper \
+    firefox \
+    flux \
+    spectacle \
+    spotify \
+    sublime-text
 
-    # imports the gpg keys
+  echo "🎉 brew packages install successful"
+  )
+}
+
+setup_shell() {
+  (
+  # activate fish
+  local fish_path="$(brew --prefix)/bin/fish"
+  if ! grep -Fxq ${fish_path} /etc/shells; then
+    echo $fish_path | sudo tee -a /etc/shells > /dev/null
+  fi
+
+  if [[ "${SHELL}" != "${fish_path}" ]]; then
+    chsh -s $fish_path
+  fi
+
+  echo "🎉 fish shell setup successful"
+  )
+}
+
+install_pack() {
+  curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
+  rm README.md
+  mv pack ${HOME}/.dotfiles/bin
+  ln -snf ${HOME}/.dotfiles/bin/pack /usr/local/bin/pack
+}
+
+dotfiles() {
+  (
+  local dotfiles_dir="${HOME}/.dotfiles"
+
+  if ! test -d "${dotfiles_dir}"; then
+    git clone https://github.com/dabio/dotfiles.git "${dotfiles_dir}"
+  fi
+
+  cd "${dotfiles_dir}"
+  make
+  cd "${HOME}"
+
+  # import gpg secrets
+  if test -d "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/gpg"; then
     gpg --import "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/gpg/gpg.asc"
-    # copy ssh keys
-    if [ ! -d "${HOME}/.ssh" ]; then
-        cp -R "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/ssh/" ~/.ssh
-    fi
-    )
-}
+  fi
 
-install_vim() {
-    # create subshell
-    (
-    cd "$HOME"
+  # import ssh keys
+  if ! test -d "${HOME}/.ssh"; then
+    cp -R "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/ssh/" ~/.ssh
+  fi
 
-    ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
+  # VIM
 
-    #gem install --install-dir /Users/dan/.gem/ruby/2.3.0 neovim
-    #pip3 install --user --upgrade neovim
-    #/usr/bin/easy_install --user pip
-    #${HOME}/Library/Python/2.7/bin/pip2 install --user --upgrade neovim
+  ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
 
-    # alias vim dotfiles to neovim
-    #mkdir -p "${XDG_CONFIG_HOME:=$HOME/.config}"
-    #ln -snf "${HOME}/.vim" "${XDG_CONFIG_HOME}/nvim"
-    #ln -snf "${HOME}/.vimrc" "${XDG_CONFIG_HOME}/nvim/init.vim"
+  if ! hash pack 2>/dev/null; then
+    install_pack
+  fi
 
-    if ! hash pack 2>/dev/null ; then
-        curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
-        rm README.md
-        mv pack ${HOME}/.dotfiles/bin
-        ln -snf ${HOME}/.dotfiles/bin/pack /usr/local/bin/pack
-    fi
-    pack install
-    )
-}
+  if [ "${PACK}" != $(pack --version | cut -d' ' -f2) ]; then
+    install_pack
+  fi
 
-install_pip() {
-    # create subshell
-    (
-    # check if pip3 is installed
-    if ! hash pip3 2>/dev/null ; then
-        echo "Please run 'install.sh brew' to install python3 dependencies first."
-        exit
-    fi
+  pack install
 
-    pip3 install --user \
-        awscli
-
-    )
+  echo "🎉 dotfiles setup successful"
+  )
 }
 
 usage() {
-    echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
-    echo "Usage:"
-    echo "  all         - do everything"
-    echo "  brew        - setup homebrew & install base pkgs"
-    echo "  dotfiles    - get dotfiles"
-    echo "  pip         - install pip packages"
-    echo "  vim         - install vim"
+  echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
+  echo "Usage:"
+  echo "  all         - do everything"
+  echo "  brew        - setup homebrew & install base pkgs"
+  echo "  shell       - setup the fish shell"
+  echo "  dotfiles    - get dotfiles"
 }
 
 main() {
-    local cmd=$1
-    if [[ -z "$cmd" ]]; then
-        usage
-        exit 1
-    fi
+  local cmd=$1
+  if [[ -z "$cmd" ]]; then
+    cmd="all"
+  fi
 
-    if [[ $cmd == "all" ]]; then
-        setup_brew
-        get_dotfiles
-        install_vim
-        install_pip
-    elif [[ $cmd == "brew" ]]; then
-        setup_brew
-    elif [[ $cmd == "dotfiles" ]]; then
-        get_dotfiles
-    elif [[ $cmd == "pip" ]]; then
-        install_pip
-    elif [[ $cmd == "vim" ]]; then
-        install_vim
-    fi
+  case $cmd in
+    "all")
+      brew_packages
+      setup_shell
+      dotfiles
+      ;;
+    "brew")
+      brew_packages
+      ;;
+    "shell")
+      setup_shell
+      ;;
+    "dotfiles")
+      dotfiles
+      ;;
+    *)
+      usage
+      ;;
+  esac
 }
 
 main "$@"
