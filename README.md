@@ -4,6 +4,5 @@ These are my dotfiles. Use them as you like!
 
 ## Start from Scratch
 
-~~~
-$ curl https://raw.githubusercontent.com/dabio/dotfiles/master/bin/install.sh | bash
-~~~
+1. Dowload the keys.
+2. `curl https://raw.githubusercontent.com/dabio/dotfiles/master/bin/install.sh | bash`
