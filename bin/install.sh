@@ -102,6 +102,12 @@ dotfiles() {
     cp -R "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/ssh/" ~/.ssh
   fi
 
+  # gopass
+  local path=$(cat .gopass.yml | grep "path" | cut -d' ' -f2)
+  if ! test -d "${path}"; then
+    gopass clone https://danilo@bitbucket.org/danilo/pass.git
+  fi
+
   # VIM
 
   ln -snf "${HOME}/.vim/vimrc" "${HOME}/.vimrc"
