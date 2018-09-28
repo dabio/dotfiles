@@ -74,10 +74,11 @@ setup_shell() {
 }
 
 install_pack() {
-  curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
+  curl -L https://github.com/maralla/pack/releases/download/v${PACK}/pack-v${PACK}-x86_64-apple-darwin.tar.gz | tar xz
   rm README.md
   mv pack ${HOME}/.dotfiles/bin
   ln -snf ${HOME}/.dotfiles/bin/pack /usr/local/bin/pack
+  pack install
 }
 
 dotfiles() {
@@ -103,8 +104,7 @@ dotfiles() {
   fi
 
   # gopass
-  local path=$(cat .gopass.yml | grep "path" | cut -d' ' -f2)
-  if ! test -d "${path}"; then
+  if ! test -d "$(cat .gopass.yml | grep path | cut -d' ' -f2)"; then
     gopass clone https://danilo@bitbucket.org/danilo/pass.git
   fi
 
@@ -116,11 +116,11 @@ dotfiles() {
     install_pack
   fi
 
-  if [ "${PACK}" != $(pack --version | cut -d' ' -f2) ]; then
+  if test "${PACK}" != "$(pack --version | cut -d' ' -f2)"; then
     install_pack
   fi
 
-  pack install
+  pack update
 
   echo "🎉 dotfiles setup successful"
   )
