@@ -104,7 +104,7 @@ dotfiles() {
   fi
 
   # gopass
-  if ! test -d "$(cat .gopass.yml | grep path | cut -d' ' -f2)"; then
+  if ! test -d "${HOME}/.password-store"; then
     gopass clone https://danilo@bitbucket.org/danilo/pass.git
   fi
 

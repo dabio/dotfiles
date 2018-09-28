@@ -23,3 +23,6 @@
 
 # tmux
 /.tmux/plugins/
+
+# gopass
+/.config/gopass/config.yml
