@@ -93,14 +93,17 @@ dotfiles() {
   make
   cd "${HOME}"
 
+  # symlink icloud
+  ln -s ${HOME}/Library/Mobile\ Documents/com~apple~CloudDocs ${HOME}/iCloud
+
   # import gpg secrets
-  if test -d "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/gpg"; then
-    gpg --import "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/gpg/gpg.asc"
+  if test -d "${HOME}/iCloud/keys/gpg"; then
+    gpg --import "${HOME}/iCloud/keys/gpg/gpg.asc"
   fi
 
   # import ssh keys
   if ! test -d "${HOME}/.ssh"; then
-    cp -R "/Users/dan/Library/Mobile Documents/com~apple~CloudDocs/keys/ssh/" ~/.ssh
+    cp -R "${HOME}/iCloud/keys/ssh/" ~/.ssh
   fi
 
   # gopass
@@ -126,6 +129,37 @@ dotfiles() {
   )
 }
 
+hardening() {
+    (
+    local name=$(uuidgen | tr "[:upper:]" "[:lower:]" | cut -d'-' -f1)
+    # set random hostname
+    sudo scutil --set HostName ${name}
+    sudo scutil --set LocalHostName ${name}
+    sudo scutil --set ComputerName ${name}
+    dscacheutil -flushcache
+
+    # enable firewall
+    sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+    sudo launchctl unload /System/Library/LaunchAgents/com.apple.alf.useragent.plist
+    sudo launchctl unload /System/Library/LaunchDaemons/com.apple.alf.agent.plist
+    sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist
+    sudo launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
+
+    # block everything
+    sudo /usr/libexec/ApplicationFirewall/socketfilterfw --setblockall on
+
+    # set dns server
+    networksetup -setdnsservers Wi-Fi Empty
+    networksetup -setdnsservers Wi-Fi 1.1.1.1 8.8.8.8
+
+    # disable captive portal
+    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
+
+    # disable crash reporter
+    sudo defaults write com.apple.CrashReporter DialogType none
+    )
+}
+
 usage() {
   echo -e "install.sh\n\tThis script installs my basic setup for a mac laptop\n"
   echo "Usage:"
@@ -133,6 +167,7 @@ usage() {
   echo "  brew        - setup homebrew & install base pkgs"
   echo "  shell       - setup the fish shell"
   echo "  dotfiles    - get dotfiles"
+  echo "  hardening   - hardening macOS"
 }
 
 main() {
@@ -155,6 +190,9 @@ main() {
       ;;
     "dotfiles")
       dotfiles
+      ;;
+    "hardening")
+      hardening
       ;;
     *)
       usage
