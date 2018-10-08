@@ -39,7 +39,8 @@ brew_packages() {
     terraform \
     tig \
     trash \
-    unrar
+    unrar \
+    vim --with-override-system-vi
 
   brew cask install \
     appzapper \

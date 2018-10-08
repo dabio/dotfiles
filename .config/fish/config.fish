@@ -28,15 +28,11 @@ if status --is-login
         set -x PATH $PATH $HOME/Library/Python/3.7/bin
     end
 
-#    set editor /usr/bin/vim
-#    # nvim
-#    if command --search nvim > /dev/null do
-#        alias vim "nvim"
-#        alias vi "nvim"
-#        set editor /usr/local/bin/nvim
-#    end
-#    set -x EDITOR $editor
-    set -x EDITOR /usr/bin/vim
+    if test -L /usr/local/bin/vim
+        set -x EDITOR /usr/local/bin/vim
+    else
+        set -x EDITOR /usr/bin/vim
+    end
 
     # trash
     if command --search trash > /dev/null do
