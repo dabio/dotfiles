@@ -24,8 +24,17 @@ if status --is-login
     end
 
     # python3
-    if test -d $HOME/Library/Python/3.7/bin
-        set -x PATH $PATH $HOME/Library/Python/3.7/bin
+    #    if test -d $HOME/Library/Python/3.7/bin
+    #        set -x PATH $PATH $HOME/Library/Python/3.7/bin
+    #    end
+    # pyenv
+    if command --search pyenv > /dev/null do
+        source (pyenv init -|psub)
+    end
+    # poetry
+    if test -d $HOME/.poetry/bin
+        set -x PATH $PATH $HOME/.poetry/bin
+        source $HOME/.poetry/env
     end
 
     if test -L /usr/local/bin/vim
