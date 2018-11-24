@@ -11,6 +11,11 @@
 - 
   category: default
   local: false
+  name: cohama/lexima.vim
+  opt: false
+- 
+  category: default
+  local: false
   name: ctrlpvim/ctrlp.vim
   opt: false
 - 
@@ -26,10 +31,10 @@
 - 
   category: default
   local: false
-  name: scrooloose/nerdtree
+  name: "sheerun/vim-polyglot"
   opt: false
 - 
   category: default
   local: false
-  name: "sheerun/vim-polyglot"
+  name: "tpope/vim-vinegar"
   opt: false

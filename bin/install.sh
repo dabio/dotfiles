@@ -2,6 +2,7 @@
 
 # Version definitions
 PACK="0.2.3"
+PYTHON_VERSIONS=("3.6.7" "3.7.1")
 
 setup_brew() {
   (
@@ -40,7 +41,7 @@ brew_packages() {
     tig \
     trash \
     unrar \
-    vim --with-override-system-vi
+    vim --without-python --with-override-system-vi
 
   brew cask install \
     appzapper \
@@ -92,6 +93,8 @@ dotfiles() {
 
   cd "${dotfiles_dir}"
   make
+  git submodule init
+  git submodule update
   cd "${HOME}"
 
   # symlink icloud
@@ -127,6 +130,37 @@ dotfiles() {
   pack update
 
   echo "🎉 dotfiles setup successful"
+  )
+}
+
+python() {
+  (
+  # install pyenv and
+  brew install pyenv \
+      openssl \
+      readline \
+      sqlite \
+      xz \
+      zlib
+  # install headers
+  #sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+
+  # install python versions
+  for v in "${PYTHON_VERSIONS[@]}"; do
+    if ! test -d "$(pyenv root)/versions/$v"; then
+      pyenv install $v
+    fi
+    pyenv global $v
+  done
+
+  # install poetry
+  if ! test -d "$HOME/.poetry/bin"; then
+    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    $HOME/.poetry/bin/poetry completions fish > ~/.config/fish/completions/poetry.fish
+    # create virtualenvs in project directory
+    $HOME/.poetry/bin/poetry config settings.virtualenvs.in-project true
+  fi
+
   )
 }
 
@@ -168,6 +202,7 @@ usage() {
   echo "  brew        - setup homebrew & install base pkgs"
   echo "  shell       - setup the fish shell"
   echo "  dotfiles    - get dotfiles"
+  echo "  python      - install pyenv and other python utilities"
   echo "  hardening   - hardening macOS"
 }
 
@@ -182,6 +217,8 @@ main() {
       brew_packages
       setup_shell
       dotfiles
+      hardening
+      python
       ;;
     "brew")
       brew_packages
@@ -194,6 +231,9 @@ main() {
       ;;
     "hardening")
       hardening
+      ;;
+    "python")
+      python
       ;;
     *)
       usage
