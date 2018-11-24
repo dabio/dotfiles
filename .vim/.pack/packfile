@@ -26,7 +26,7 @@
 - 
   category: default
   local: false
-  name: scrooloose/nerdtree
+  name: "tpope/vim-fugitive"
   opt: false
 - 
   category: default
