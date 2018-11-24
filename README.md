@@ -9,5 +9,5 @@ These are my dotfiles. Use them as you like!
    ~~~ bash
    $ sudo dseditgroup -o edit -a dan -t user admin
    $ curl https://raw.githubusercontent.com/dabio/dotfiles/master/bin/install.sh | bash
-   $ sudo dseditgroup -o delete -a dan -t user admin
+   $ sudo dseditgroup -o edit -d dan -t user admin
    ~~~
