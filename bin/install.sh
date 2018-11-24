@@ -2,14 +2,15 @@
 
 # Version definitions
 PACK="0.2.3"
-PYTHON_VERSIONS=("3.6.7" "3.7.1")
+PYTHON_VERSIONS=("3.7.1")
 
 setup_brew() {
   (
-  local status=$(xcode-select -p)
-  if [ "$status" -eq "$status" ] 2> /dev/null; then
-    xcode-select --install
-  fi
+  # Homebrew does that by itself now
+  #local status=$(xcode-select -p)
+  #if [ "$status" -eq "$status" ] 2> /dev/null; then
+  #  xcode-select --install
+  #fi
 
   if ! hash brew 2> /dev/null; then
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -35,13 +36,12 @@ brew_packages() {
     go \
     gopass \
     mas \
-    p7zip \
     python \
     terraform \
     tig \
     trash \
-    unrar \
-    vim --without-python --with-override-system-vi
+    unrar
+  brew install vim --without-python --with-override-system-vi
 
   brew cask install \
     appzapper \
@@ -188,7 +188,7 @@ hardening() {
     networksetup -setdnsservers Wi-Fi 1.1.1.1 8.8.8.8
 
     # disable captive portal
-    sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
+    #sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.captive.control Active -bool false
 
     # disable crash reporter
     sudo defaults write com.apple.CrashReporter DialogType none
