@@ -1,6 +1,5 @@
 " Use "hybrid" (both absolute and relative) line numbers
-set number
-set relativenumber
+set number relativenumber
 
 " use the system clipboard
 set clipboard=unnamed
@@ -116,6 +115,13 @@ if has('autocmd')
 
     " =========== plugin clean whitespaces ===========
     au BufWritePre * call s:StripTrailingWhitespace()
+  augroup END
+
+  augroup numbertoggle
+    au!
+
+    au BufEnter,FocusGained,InsertLeave * set relativenumber
+    au BufLeave,FocusLost,InsertEnter * set norelativenumber
   augroup END
 endif
 

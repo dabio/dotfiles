@@ -13,8 +13,19 @@ setup_brew() {
   #fi
 
   if ! hash brew 2> /dev/null; then
+    local is_admin="$(dseditgroup -o checkmember -m ${USER} admin)"
+    if [[ "${is_admin}" == *"NOT a member"* ]]; then
+      sudo dseditgroup -o edit -a ${USER} -t user admin
+      echo "add user ${USER} to group admin"
+    fi
+
     /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
     find /usr/local -type d -depth 1 -exec chown -R dan:staff {} \;
+
+    if [[ ${is_admin} == *"NOT a member"* ]]; then
+      sudo dseditgroup -o edit -d ${USER} -t user admin
+      echo "remove user ${USER} from group admin"
+    fi
   fi
 
   brew doctor
@@ -36,12 +47,14 @@ brew_packages() {
     go \
     gopass \
     mas \
+    p7zip \
     python \
     terraform \
     tig \
     trash \
-    unrar
-  brew install vim --without-python --with-override-system-vi
+    tmux \
+    unrar \
+    vim
 
   brew cask install \
     appzapper \
@@ -92,9 +105,9 @@ dotfiles() {
   fi
 
   cd "${dotfiles_dir}"
-  make
   git submodule init
   git submodule update
+  make
   cd "${HOME}"
 
   # symlink icloud
@@ -109,6 +122,10 @@ dotfiles() {
   if ! test -d "${HOME}/.ssh"; then
     cp -R "${HOME}/iCloud/keys/ssh/" ~/.ssh
   fi
+  # update permissions of ~/.ssh folder
+  chmod 0700 ~/.ssh
+  chmod 0600 ~/.ssh/id_rsa
+  chmod 0644 ~/.ssh/id_rsa.pub
 
   # gopass
   if ! test -d "${HOME}/.password-store"; then
@@ -133,7 +150,7 @@ dotfiles() {
   )
 }
 
-python() {
+python_setup() {
   (
   # install pyenv and
   brew install pyenv \
@@ -143,7 +160,7 @@ python() {
       xz \
       zlib
   # install headers
-  #sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
+  sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 
   # install python versions
   for v in "${PYTHON_VERSIONS[@]}"; do
@@ -156,11 +173,14 @@ python() {
   # install poetry
   if ! test -d "$HOME/.poetry/bin"; then
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    mkdir -p ~/.config/fish/completions
     $HOME/.poetry/bin/poetry completions fish > ~/.config/fish/completions/poetry.fish
     # create virtualenvs in project directory
     $HOME/.poetry/bin/poetry config settings.virtualenvs.in-project true
   fi
+  poetry self:update
 
+  echo "🎉 python setup successful"
   )
 }
 
@@ -218,7 +238,7 @@ main() {
       setup_shell
       dotfiles
       hardening
-      python
+      python_setup
       ;;
     "brew")
       brew_packages
@@ -233,7 +253,7 @@ main() {
       hardening
       ;;
     "python")
-      python
+      python_setup
       ;;
     *)
       usage
