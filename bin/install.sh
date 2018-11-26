@@ -129,7 +129,7 @@ dotfiles() {
 
   # gopass
   if ! test -d "${HOME}/.password-store"; then
-    gopass clone https://danilo@bitbucket.org/danilo/pass.git
+    gopass clone git@bitbucket.org:danilo/pass.git
   fi
 
   # VIM
