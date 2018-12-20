@@ -1,3 +1,7 @@
+" enable vim defaults
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
+
 " Use "hybrid" (both absolute and relative) line numbers
 set number relativenumber
 
@@ -91,7 +95,8 @@ endfunction
 
 if has('autocmd')
   augroup vimrc
-    filetype plugin indent on
+    " done within defaults.vim
+    "filetype plugin indent on
 
     au!
     " Re-source .vimrc on save so changes are effective immediately:
