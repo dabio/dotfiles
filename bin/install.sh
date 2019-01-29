@@ -60,7 +60,6 @@ brew_packages() {
     appzapper \
     firefox \
     flux \
-    spectacle \
     spotify \
     sublime-text
 

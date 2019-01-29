@@ -8,7 +8,7 @@ if status --is-login
     end
 
     # go
-    set -x GOPATH $HOME/Sites/go
+    set -x GOPATH $HOME/go
     if test -d $GOPATH/bin
         set -x PATH $PATH $GOPATH/bin
     end
