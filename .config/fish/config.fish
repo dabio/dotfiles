@@ -2,6 +2,8 @@ source ~/.config/fish/aliases.fish
 
 if status --is-login
 
+    set -x PATH $PATH $HOME/.local/bin
+
     # Postgres
     if test -d /Applications/Postgres.app/Contents/Versions/latest/bin
         set -x PATH $PATH /Applications/Postgres.app/Contents/Versions/latest/bin
