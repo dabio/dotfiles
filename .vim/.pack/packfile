@@ -31,10 +31,20 @@
 - 
   category: default
   local: false
+  name: sbdchd/neoformat
+  opt: false
+- 
+  category: default
+  local: false
   name: "sheerun/vim-polyglot"
   opt: false
 - 
   category: default
   local: false
   name: "tpope/vim-vinegar"
+  opt: false
+- 
+  category: default
+  local: false
+  name: w0rp/ale
   opt: false

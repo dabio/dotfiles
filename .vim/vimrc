@@ -53,7 +53,7 @@ nnoremap <leader><space> :nohlsearch<CR>
 nnoremap <space> zz
 
 if has('nvim')
-"  set termguicolors
+  set termguicolors
 endif
 
 " do not show stupid q: window
@@ -127,6 +127,12 @@ if has('autocmd')
 
     au BufEnter,FocusGained,InsertLeave * set relativenumber
     au BufLeave,FocusLost,InsertEnter * set norelativenumber
+  augroup END
+
+  augroup fmt
+    au!
+
+    autocmd BufWritePre * undojoin | Neoformat
   augroup END
 endif
 

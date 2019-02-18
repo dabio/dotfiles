@@ -12,3 +12,5 @@ function battery
 end
 
 alias uuidgen 'uuidgen | tr "[:upper:]" "[:lower:]"'
+
+alias pass gopass
