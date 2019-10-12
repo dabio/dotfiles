@@ -1,6 +1,4 @@
-" enable vim defaults
-unlet! skip_defaults_vim
-source $VIMRUNTIME/defaults.vim
+" vim:et:sw=2:ts=2
 
 " Use "hybrid" (both absolute and relative) line numbers
 set number relativenumber
@@ -140,8 +138,4 @@ if has('syntax') && !exists('g:syntax_on')
   syntax enable
 endif
 
-"let base16colorspace=256
-"colorscheme base16-tomorrow-night
 colorscheme nord
-
-" vim:set ts=2 et sw=2:
