@@ -1,4 +1,5 @@
 path+=(/usr/local/sbin)
+path+=(~/.local/bin)
 
 export EDITOR=vim
 export VOLTPATH=~/.vim/volt
