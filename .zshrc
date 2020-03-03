@@ -1,8 +1,14 @@
+# enable the default zsh completions!
+autoload -Uz compinit && compinit
+
 path+=(/usr/local/sbin)
 path+=(~/.local/bin)
+path+=(~/go/bin)
 
 export EDITOR=vim
 export VOLTPATH=~/.vim/volt
+export GOPATH=~/go
+export LC_ALL=en_US.UTF-8
 
 alias ll="ls -la"
 alias pass=gopass

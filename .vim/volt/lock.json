@@ -1,0 +1,67 @@
+{
+  "version": 2,
+  "current_profile_name": "default",
+  "repos": [
+    {
+      "type": "git",
+      "path": "github.com/arcticicestudio/nord-vim",
+      "version": "38ab4a9c974be4189bdf53f7d938a6197ba19119"
+    },
+    {
+      "type": "git",
+      "path": "github.com/cohama/lexima.vim",
+      "version": "aa32e972b69230625989daa09ee5fd74a2d877ef"
+    },
+    {
+      "type": "git",
+      "path": "github.com/ctrlpvim/ctrlp.vim",
+      "version": "6bca8770a04c099e8c6ec7c7ea58cf9a17c8e44d"
+    },
+    {
+      "type": "git",
+      "path": "github.com/itchyny/lightline.vim",
+      "version": "c9ab296e856bed4e694180efb6ffb692cf18ed8f"
+    },
+    {
+      "type": "git",
+      "path": "github.com/mhinz/vim-signify",
+      "version": "80f64eace5694413f9dfd8e70e4a7018b56c42b6"
+    },
+    {
+      "type": "git",
+      "path": "github.com/sbdchd/neoformat",
+      "version": "ec512eb8d8d66fa15bb7f5df2f500d117aa3ee0d"
+    },
+    {
+      "type": "git",
+      "path": "github.com/sheerun/vim-polyglot",
+      "version": "f95026252c5a31242903a98c741887696dfbb11f"
+    },
+    {
+      "type": "git",
+      "path": "github.com/tpope/vim-vinegar",
+      "version": "09ac84c4d152a944caa341e913220087211c72ef"
+    },
+    {
+      "type": "git",
+      "path": "github.com/w0rp/ale",
+      "version": "3fe2223a48465c58c48a5a6a30ecf13ab92f7b97"
+    }
+  ],
+  "profiles": [
+    {
+      "name": "default",
+      "repos_path": [
+        "github.com/arcticicestudio/nord-vim",
+        "github.com/cohama/lexima.vim",
+        "github.com/ctrlpvim/ctrlp.vim",
+        "github.com/itchyny/lightline.vim",
+        "github.com/mhinz/vim-signify",
+        "github.com/sbdchd/neoformat",
+        "github.com/sheerun/vim-polyglot",
+        "github.com/tpope/vim-vinegar",
+        "github.com/w0rp/ale"
+      ]
+    }
+  ]
+}
