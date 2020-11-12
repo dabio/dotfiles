@@ -5,47 +5,47 @@
     {
       "type": "git",
       "path": "github.com/arcticicestudio/nord-vim",
-      "version": "38ab4a9c974be4189bdf53f7d938a6197ba19119"
+      "version": "ea7ff9c343392ec6dfac4e9ec3fe0c45afb92a40"
     },
     {
       "type": "git",
       "path": "github.com/cohama/lexima.vim",
-      "version": "aa32e972b69230625989daa09ee5fd74a2d877ef"
+      "version": "89bf4dc13539131a29cf938074b3f1ce9d000bfd"
     },
     {
       "type": "git",
       "path": "github.com/ctrlpvim/ctrlp.vim",
-      "version": "6bca8770a04c099e8c6ec7c7ea58cf9a17c8e44d"
+      "version": "3866ae170a342fb40d83e1538c37c81c7977b821"
     },
     {
       "type": "git",
       "path": "github.com/itchyny/lightline.vim",
-      "version": "c9ab296e856bed4e694180efb6ffb692cf18ed8f"
+      "version": "2d482e82f2e13c6d7bad3a0aabfc44f8aba945ed"
     },
     {
       "type": "git",
       "path": "github.com/mhinz/vim-signify",
-      "version": "80f64eace5694413f9dfd8e70e4a7018b56c42b6"
+      "version": "98c693f7a1a91b73d9232d868765b4d20af892fe"
     },
     {
       "type": "git",
       "path": "github.com/sbdchd/neoformat",
-      "version": "ec512eb8d8d66fa15bb7f5df2f500d117aa3ee0d"
+      "version": "0b1c3ed1d19fceb3c7367fe40ef9934819effb13"
     },
     {
       "type": "git",
       "path": "github.com/sheerun/vim-polyglot",
-      "version": "f95026252c5a31242903a98c741887696dfbb11f"
+      "version": "4af1321588c7dcb718022226cb27ec325973c2f0"
     },
     {
       "type": "git",
       "path": "github.com/tpope/vim-vinegar",
-      "version": "09ac84c4d152a944caa341e913220087211c72ef"
+      "version": "5fee9d230ec4a6a16c45f2c71482595e4d9a67bd"
     },
     {
       "type": "git",
       "path": "github.com/w0rp/ale",
-      "version": "3fe2223a48465c58c48a5a6a30ecf13ab92f7b97"
+      "version": "1ec573bf0df6cbc5eef8b593f93081e4c1837c1b"
     }
   ],
   "profiles": [
