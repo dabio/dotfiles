@@ -1,4 +1,6 @@
 " vim:et:sw=2:ts=2
+unlet! skip_defaults_vim
+source $VIMRUNTIME/defaults.vim
 
 " Use "hybrid" (both absolute and relative) line numbers
 set number relativenumber

@@ -1,7 +1,9 @@
 [user]
     name = Danilo
     email = dabio@users.noreply.github.com
-    signingkey = A4C2D9D3
+    signingkey = 0x33A9AAC414103B93
+[includeIf "gitdir:~/Projects/bundesdruckerei/"]
+    path = /Users/dan/Projects/bundesdruckerei/gitconfig
 [core]
     excludesfile = /Users/dan/.config/git/ignore
 [color]
@@ -17,6 +19,8 @@
     smudge = git hawser smudge %f
     required = true
 [push]
-	default = simple
-[commit]
-	gpgsign = true
+    default = simple
+#[commit]
+#    gpgsign = true
+[protocol]
+    version = 2
