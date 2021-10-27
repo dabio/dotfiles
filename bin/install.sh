@@ -24,7 +24,7 @@ setup_brew() {
       sudo dseditgroup -o edit -a ${USER} -t user admin
     fi
 
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     find /usr/local -type d -depth 1 -exec chown -R dan:staff {} \;
 
     if echo "$is_admin" | grep -q 'NOT a member'; then
